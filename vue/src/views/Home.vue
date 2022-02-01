@@ -1,12 +1,30 @@
 <template>
   <div class="home">
-    <h1>Home</h1>
-    <p>This is the homepage!</p>
+    <h1>TE-GRAM</h1>
+
+    <nav>
+      <router-link v-bind:to="{ name: 'uploadPhoto' }">Upload New Photo</router-link> <br/>
+      <router-link v-bind:to="{ name: 'myProfile' }">My Profile</router-link>
+    </nav>
+
+    <p>Photo feed coming soon...</p>
+
+    <!-- TODO:
+    1. photo feed
+    2. add photo button
+    3. search users
+     -->
+
+
   </div>
 </template>
 
 <script>
 export default {
-  name: "home"
+  name: "home",
+
+  methods: {
+
+  }
 };
 </script>
