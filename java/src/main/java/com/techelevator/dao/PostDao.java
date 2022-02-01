@@ -4,6 +4,6 @@ import com.techelevator.model.PostDTO;
 
 public interface PostDao {
 
-    PostDTO createNewPost(PostDTO newPost);
+    void createNewPost(PostDTO newPost);
 
 }

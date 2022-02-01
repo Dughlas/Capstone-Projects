@@ -1,9 +1,9 @@
 package com.techelevator.model;
 
 public class PostDTO {
-    private int userId;
     private int photoId;
     private String url;
+    private int userId;
     private String caption;
 
     public PostDTO(int userId, int photoId, String url, String caption) {
