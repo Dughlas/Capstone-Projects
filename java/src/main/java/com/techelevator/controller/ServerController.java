@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class ServerController {
 
@@ -17,6 +19,11 @@ public class ServerController {
     @RequestMapping(path="/addPost", method = RequestMethod.POST)
     public void createPost(@RequestBody PostDTO newPost) {
         postDao.createNewPost(newPost);
+    }
+
+    @RequestMapping(path="/viewPosts", method = RequestMethod.POST)
+    public List<PostDTO> viewUserPosts(@RequestBody int userId) {
+        return postDao.getAllPostsByUser(userId);
     }
 
 }
