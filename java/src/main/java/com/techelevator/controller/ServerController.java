@@ -3,10 +3,7 @@ package com.techelevator.controller;
 import com.techelevator.dao.PostDao;
 import com.techelevator.model.PostDTO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,8 +18,8 @@ public class ServerController {
         postDao.createNewPost(newPost);
     }
 
-    @RequestMapping(path="/viewPosts", method = RequestMethod.POST)
-    public List<PostDTO> viewUserPosts(@RequestBody int userId) {
+    @RequestMapping(path="/viewPosts/user/{id}", method = RequestMethod.GET)
+    public List<PostDTO> viewUserPosts(@PathVariable("id") int userId) {
         return postDao.getAllPostsByUser(userId);
     }
 
