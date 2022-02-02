@@ -32,9 +32,13 @@ export default {
             const upload = result.info;
             console.table(upload);  
             const url = upload.secure_url;
-            console.log(url);        
+            console.log(url);
+            //route to caption form 
+            this.$router.push({ name: 'captionPhoto', query: { redirect: '/captionPhoto' }})
             }
         }).open();
+
+        
      }
 }
 }

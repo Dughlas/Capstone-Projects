@@ -7,6 +7,7 @@ import Register from '../views/Register.vue'
 import store from '../store/index'
 import UploadPhoto from '../views/UploadPhoto.vue'
 import MyProfile from '../views/MyProfile.vue'
+import CaptionPhoto from '../views/CaptionPhoto.vue'
 
 Vue.use(Router)
 
@@ -67,6 +68,14 @@ const router = new Router({
       path: "/myProfile",
       name: "myProfile",
       component: MyProfile,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/captionPhoto",
+      name: "captionPhoto",
+      component: CaptionPhoto,
       meta: {
         requiresAuth: true
       }
