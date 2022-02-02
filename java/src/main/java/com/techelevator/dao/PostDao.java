@@ -2,8 +2,13 @@ package com.techelevator.dao;
 
 import com.techelevator.model.PostDTO;
 
+import java.util.List;
+
 public interface PostDao {
 
-    PostDTO createNewPost(PostDTO newPost);
+    void createNewPost(PostDTO newPost);
+
+    List<PostDTO> getAllPostsByUser(int userId);
+
 
 }
