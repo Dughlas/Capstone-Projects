@@ -10,6 +10,7 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
+    "@cloudinary/url-gen": "^1.5.1",
     "axios": "^0.21.1",
     "core-js": "^3.9.1",
     "vue": "^2.6.12",
@@ -30,4 +31,5 @@
     "eslint-plugin-vue": "^7.7.0",
     "vue-template-compiler": "^2.6.12"
   }
+  
 }
