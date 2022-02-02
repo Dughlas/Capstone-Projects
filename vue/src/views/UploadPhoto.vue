@@ -28,7 +28,12 @@ export default {
         },
         (error, result) => {
           if (!error && result && result.event === "success") {
-            console.log('Done uploading..: ', result);          }
+            console.log('Done uploading..: ', result);
+            const upload = result.info;
+            console.table(upload);  
+            const url = upload.secure_url;
+            console.log(url);        
+            }
         }).open();
      }
 }
