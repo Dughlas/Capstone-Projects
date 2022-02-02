@@ -13,6 +13,7 @@
     1. photo feed
     2. add photo button
     3. search users
+    4. my profile 
      -->
 
 
