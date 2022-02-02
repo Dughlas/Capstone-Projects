@@ -1,7 +1,7 @@
 <template>
   <div id="login" class="text-center">
     <form class="form-signin" @submit.prevent="login">
-      <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
+      <h1 class="h3 mb-3 font-weight-normal">TE-gram</h1>
       <div
         class="alert alert-danger"
         role="alert"
@@ -12,7 +12,7 @@
         role="alert"
         v-if="this.$route.query.registration"
       >Thank you for registering, please sign in.</div>
-      <label for="username" class="sr-only">Username</label>
+      <!-- <label for="username" class="sr-only">Username</label> -->
       <input
         type="text"
         id="username"
@@ -22,7 +22,9 @@
         required
         autofocus
       />
-      <label for="password" class="sr-only">Password</label>
+      <br />
+     
+      <!-- <label for="password" class="sr-only">Password</label> -->
       <input
         type="password"
         id="password"
@@ -31,8 +33,14 @@
         v-model="user.password"
         required
       />
-      <router-link :to="{ name: 'register' }">Need an account?</router-link>
-      <button type="submit">Sign in</button>
+      <br />
+       <br />
+      <button type="submit">Log In</button>
+      <br />
+        <br />
+      <span>Don't have an account? </span>
+      <router-link :to="{ name: 'register' }">Sign up</router-link>
+      
     </form>
   </div>
 </template>
@@ -74,3 +82,39 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+@import url('//fonts.cdnfonts.com/css/billabong');
+#login {
+  /* background-image: url("../assets/background.jpg"); 
+  background-size: cover; */
+  background-color: #FFFAFA;
+  position: absolute;
+  top: 95px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+}
+
+h1{
+   font-family: "billabong", sans-serif;
+   font-weight: bold;
+}
+
+#login button {
+  width: 100px;
+  height: 30px;
+  border-radius: 4px;
+  border-style: solid;
+  border-width: thin;
+  font-weight: bold;
+}
+.form-signin {
+  text-align: center;
+  width: 300px;
+  margin: 60px auto 30px;
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 10px;
+}
+</style>

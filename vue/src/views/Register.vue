@@ -1,11 +1,12 @@
 <template>
   <div id="register" class="text-center">
     <form class="form-register" @submit.prevent="register">
-      <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
+      <h1 class="h3 mb-3 font-weight-normal">TE-gram</h1>
+      <p>Sign up to see photos from your friends.</p>
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
-      <label for="username" class="sr-only">Username</label>
+      <!-- <label for="username" class="sr-only">Username</label> -->
       <input
         type="text"
         id="username"
@@ -15,7 +16,8 @@
         required
         autofocus
       />
-      <label for="password" class="sr-only">Password</label>
+      <br />
+      <!-- <label for="password" class="sr-only">Password</label> -->
       <input
         type="password"
         id="password"
@@ -24,6 +26,8 @@
         v-model="user.password"
         required
       />
+
+       <br />
       <input
         type="password"
         id="confirmPassword"
@@ -32,10 +36,16 @@
         v-model="user.confirmPassword"
         required
       />
-      <router-link :to="{ name: 'login' }">Have an account?</router-link>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">
-        Create Account
+       <br />
+       
+<!-- class="btn btn-lg btn-primary btn-block" -->
+           <button  type="submit">
+        Sign up
       </button>
+     <br />
+      <br />
+      <router-link :to="{ name: 'login' }">Have an account?</router-link> 
+    
     </form>
   </div>
 </template>
@@ -90,4 +100,47 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+@import url('//fonts.cdnfonts.com/css/billabong');
+
+h1{
+   font-family: "billabong", sans-serif;
+   font-weight: bold;
+}
+#register {
+  /* background-image: url("../assets/background.jpg");
+  background-size: cover; */
+  background-color: #FFFAFA;
+  position: absolute;
+  top: 95px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+}
+
+h1{
+   font-family: "billabong", sans-serif;
+   font-weight: bold;
+}
+.form-register {
+  text-align: center;
+}
+#register button {
+  width: 120px;
+  height: 30px;
+  border-radius: 4px;
+border-style: solid;
+  border-width: thin;
+  font-weight: bold;
+
+   
+}
+.form-register {
+  text-align: center;
+  width: 300px;
+  margin: 60px auto 30px;
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 10px;
+}
+</style>
