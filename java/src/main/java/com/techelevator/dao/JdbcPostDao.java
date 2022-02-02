@@ -34,7 +34,7 @@ public class JdbcPostDao implements PostDao{
 
     @Override
     public List<PostDTO> getAllPostsByUser(int userId) {
-        String sql = "SELECT photo_id, photo_url " +
+        String sql = "SELECT photo_id, photo_url, caption " +
                 " FROM photos " +
                 " WHERE user_id = ?";
         List<PostDTO> userPosts = new ArrayList<>();
@@ -43,13 +43,13 @@ public class JdbcPostDao implements PostDao{
         while(result.next()) {
             int photoId = result.getInt("photo_id");
             String photoUrl = result.getString("photo_url");
+            String photoCaption = result.getString("caption");
 
             PostDTO postDTO = new PostDTO();
             postDTO.setPhotoId(photoId);
             postDTO.setUrl(photoUrl);
+            postDTO.setCaption(photoCaption);
             userPosts.add(postDTO);
-
-
         }
         return userPosts;
     }
