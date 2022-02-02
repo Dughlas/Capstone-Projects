@@ -29,12 +29,12 @@ export default {
         (error, result) => {
           if (!error && result && result.event === "success") {
             console.log('Done uploading..: ', result);
-            const upload = result.info;
-            console.table(upload);  
-            const url = upload.secure_url;
+            this.$store.state.upload = result.info;
+            console.table(this.$store.state.upload);  
+            const url = this.$store.state.upload.secure_url;
             console.log(url);
-            //route to caption form 
-            this.$router.push({ name: 'captionPhoto', query: { redirect: '/captionPhoto' }})
+            this.$router.push({ name: 'captionPhoto', query: 
+            { redirect: '/captionPhoto' }})
             }
         }).open();
 
