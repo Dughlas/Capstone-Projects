@@ -17,7 +17,7 @@ export default {
   data () {
     return {
       newPic: {
-        userId: this.$store.state.userId,
+        username: this.$store.state.user.username,
         url: this.$store.state.upload.url
       }
     }

@@ -9,11 +9,13 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.techelevator.model.User;
 
 @Service
+@Component
 public class JdbcUserDao implements UserDao {
 
     private JdbcTemplate jdbcTemplate;
@@ -25,6 +27,7 @@ public class JdbcUserDao implements UserDao {
     @Override
     public int findIdByUsername(String username) {
         return jdbcTemplate.queryForObject("select user_id from users where username = ?", int.class, username);
+
     }
 
 	@Override
