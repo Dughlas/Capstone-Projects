@@ -32,7 +32,7 @@ export default {
       ServerService.addNewPic(this.newPic).then(
         () => {
           console.log('Added Thingy');
-      
+          console.log(this.$store.state.user.username);
         }
       )
     },
