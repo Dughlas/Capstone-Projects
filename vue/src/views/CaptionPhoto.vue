@@ -31,8 +31,10 @@ export default {
     newPost() {
       ServerService.addNewPic(this.newPic).then(
         () => {
-          console.log('Added Thingy');
+          console.log('Added Photo');
           console.log(this.$store.state.user.username);
+          this.$router.push({ name: 'home', query: 
+            { redirect: '/' }});
         }
       )
     },
