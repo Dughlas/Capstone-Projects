@@ -2,9 +2,9 @@
   <div>
       <!-- place photo thumbnail here -->
       <img v-bind:src="$store.state.upload.url" alt="photo thumbnail?"/> <br/>
-      <form>
+      <form >
       <input type="text" v-model="newPic.caption" placeholder="caption your photo" />
-      <input type="submit" />
+      <input type="submit" v-on:submit.prevent='newPost'/>
       </form>
       userId
       url
@@ -31,10 +31,13 @@ export default {
     newPost() {
       ServerService.addNewPic(this.newPic).then(
         () => {
-          window.alert('Added Thingy');
+          console.log('Added Thingy');
       
         }
       )
+    },
+    test(){
+      console.log('Kinda thingy')
     }
   }
 }
