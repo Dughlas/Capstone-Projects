@@ -16,11 +16,13 @@ public class JdbcPostDao implements PostDao{
     public JdbcPostDao(JdbcTemplate template) {this.template = template;}
 
 
+
     @Override
     public void createNewPost(PostDTO newPost) {
         int userId = newPost.getUserId();
         String photoUrl = newPost.getUrl();
         String  caption = newPost.getCaption();
+
 
         try{
             String sql = "INSERT INTO photos(user_id, photo_url, caption) " +
