@@ -4,12 +4,14 @@ import com.techelevator.dao.PostDao;
 import com.techelevator.dao.UserDao;
 import com.techelevator.model.PostDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @CrossOrigin
 @RestController
+@PreAuthorize("isAuthenticated()")
 public class ServerController {
 
     @Autowired
@@ -31,9 +33,10 @@ public class ServerController {
         postDao.createNewPost(postablePost);
     }
 
-    @RequestMapping(path="/viewPosts/user/{id}", method = RequestMethod.GET)
-    public List<PostDTO> viewUserPosts(@PathVariable("id") int userId) {
-        return postDao.getAllPostsByUser(userId);
+    @RequestMapping(path="/viewPosts/username", method = RequestMethod.GET)
+    public List<PostDTO> viewUserPosts(@PathVariable("username") String username) {
+        int id = userDao.findIdByUsername(username);
+        return postDao.getAllPostsByUser(id);
     }
 
     @RequestMapping(path="/homeFeed", method = RequestMethod.GET)

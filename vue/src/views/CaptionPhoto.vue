@@ -6,8 +6,8 @@
       <input type="text" v-model="newPic.caption" placeholder="caption your photo" />
       <input type="submit"/>
       </form>
-      userId
-      url
+      {{userId}}
+      {{url}}
   </div>
 </template>
 

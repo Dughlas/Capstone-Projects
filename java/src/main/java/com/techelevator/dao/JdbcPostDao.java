@@ -58,8 +58,10 @@ public class JdbcPostDao implements PostDao{
 
     @Override
     public List<PostDTO> photoFeed() {
-        String sql = "Select * from photos " +
-                " order by photo_id DESC";
+        String sql = "SELECT username, photo_id, photo_url, caption " +
+                "FROM photos p " +
+                "JOIN users u ON p.user_id = u.user_id  " +
+                "ORDER BY photo_id DESC";
         List<PostDTO> userPosts = new ArrayList<>();
         SqlRowSet result = template.queryForRowSet(sql);
 
@@ -67,15 +69,16 @@ public class JdbcPostDao implements PostDao{
             int photoId = result.getInt("photo_id");
             String photoUrl = result.getString("photo_url");
             String photoCaption = result.getString("caption");
+            String username = result.getString("username");
 
             PostDTO postDTO = new PostDTO();
             postDTO.setPhotoId(photoId);
             postDTO.setUrl(photoUrl);
+            postDTO.setUsername(username);
             postDTO.setCaption(photoCaption);
             userPosts.add(postDTO);
         }
         return userPosts;
-
     }
 
     @Override
