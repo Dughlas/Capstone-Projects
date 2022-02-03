@@ -10,5 +10,10 @@ public interface PostDao {
 
     List<PostDTO> getAllPostsByUser(int userId);
 
+    List<PostDTO> photoFeed();
+
+    List<PostDTO> favoriteFeed();
+
+
 
 }

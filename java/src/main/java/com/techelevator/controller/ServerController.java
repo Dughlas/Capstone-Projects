@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
+
 @RestController
 public class ServerController {
 
@@ -23,6 +25,11 @@ public class ServerController {
     @RequestMapping(path="/viewPosts/user/{id}", method = RequestMethod.GET)
     public List<PostDTO> viewUserPosts(@PathVariable("id") int userId) {
         return postDao.getAllPostsByUser(userId);
+    }
+
+    @RequestMapping(path="/homeFeed", method = RequestMethod.GET)
+    public List<PostDTO> HomeFeed() {
+        return postDao.photoFeed();
     }
 
 }

@@ -53,4 +53,47 @@ public class JdbcPostDao implements PostDao{
         }
         return userPosts;
     }
+
+    @Override
+    public List<PostDTO> photoFeed() {
+        String sql = "Select * from photos " +
+                " order by photo_id DESC";
+        List<PostDTO> userPosts = new ArrayList<>();
+        SqlRowSet result = template.queryForRowSet(sql);
+
+        while(result.next()) {
+            int photoId = result.getInt("photo_id");
+            String photoUrl = result.getString("photo_url");
+            String photoCaption = result.getString("caption");
+
+            PostDTO postDTO = new PostDTO();
+            postDTO.setPhotoId(photoId);
+            postDTO.setUrl(photoUrl);
+            postDTO.setCaption(photoCaption);
+            userPosts.add(postDTO);
+        }
+        return userPosts;
+
+    }
+
+    @Override
+    public List<PostDTO> favoriteFeed() {
+        String sql = "Select f.photo_id, photo_url, p.user_id, caption from favorites f " +
+                " join photos p on f.photo_id = p.photo_id;";
+        List<PostDTO> userPosts = new ArrayList<>();
+        SqlRowSet result = template.queryForRowSet(sql);
+
+        while(result.next()) {
+            int photoId = result.getInt("photo_id");
+            String photoUrl = result.getString("photo_url");
+            String photoCaption = result.getString("caption");
+
+            PostDTO postDTO = new PostDTO();
+            postDTO.setPhotoId(photoId);
+            postDTO.setUrl(photoUrl);
+            postDTO.setCaption(photoCaption);
+            userPosts.add(postDTO);
+        }
+        return userPosts;
+    }
 }

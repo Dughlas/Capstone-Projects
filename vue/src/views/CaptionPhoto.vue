@@ -2,20 +2,40 @@
   <div>
       <!-- place photo thumbnail here -->
       <img v-bind:src="$store.state.upload.url" alt="photo thumbnail?"/> <br/>
-      <input v-model="caption" placeholder="caption your photo">
+      <form>
+      <input type="text" v-model="newPic.caption" placeholder="caption your photo" />
+      <input type="submit" />
+      </form>
+      userId
+      url
   </div>
 </template>
 
 <script>
+import ServerService from '../services/ServerService.js'
 export default {
   data () {
     return {
-      caption: ''
+      newPic: {
+        userId: this.$store.state.userId,
+        url: this.$store.state.upload.url
+      }
     }
   },
 
   created() {
     console.log(this.$store.state.upload.url)
+  },
+
+  methods: {
+    newPost() {
+      ServerService.addNewPic(this.newPic).then(
+        () => {
+          window.alert('Added Thingy');
+      
+        }
+      )
+    }
   }
 }
 </script>

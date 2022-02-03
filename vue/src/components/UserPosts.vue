@@ -17,7 +17,8 @@ export default {
                 this.user = response.data;
             }
         )
-    }
+    },
+
 
 }
 </script>
