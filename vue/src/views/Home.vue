@@ -1,19 +1,19 @@
 <template>
   <div class="navigation">
-    <div class="logo">
-      <a class="no-underline" href="#"> TE-gram capstone </a>
-    </div>
-    <router-link v-bind:to="{ name: 'uploadPhoto' }"
-      >Upload New Photo</router-link
-    >
-    <br />
-    <router-link v-bind:to="{ name: 'myProfile' }">My Profile</router-link>
-    <div class="navigation-search-container">
-      <i class="fa fa-search"></i>
-      <input class="search-field" type="text" placeholder="Search" />
-      <div class="search-container">
-        <div class="search-container-box">
-          <div class="search-results"></div>
+  <div class="logo">
+    <a class="no-underline" href="#">
+      TE-gram
+    </a>
+  </div>
+  <router-link v-bind:to="{ name: 'uploadPhoto' }">Upload New Photo</router-link> <br/>
+      <router-link v-bind:to="{ name: 'myProfile' }">My Profile</router-link>
+  <div class="navigation-search-container">
+    <i class="fa fa-search"></i>
+    <input class="search-field" type="text" placeholder="Search">
+    <div class="search-container">
+      <div class="search-container-box">
+        <div class="search-results">
+
         </div>
       </div>
     </div>

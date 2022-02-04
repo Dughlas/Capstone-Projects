@@ -44,9 +44,11 @@ CREATE TABLE comments (
 comment_id serial,
 comment varchar,
 user_id int,
+photo_id int,
 
 constraint pk_comments primary key(comment_id),
-constraint fk_comments_user_id foreign key(user_id) references users(user_id)
+constraint fk_comments_user_id foreign key(user_id) references users(user_id),
+constraint fk_comments_photo_id foreign key(photo_id) references photos(photo_id)
 );
 
 
