@@ -14,6 +14,13 @@ public interface PostDao {
 
     List<PostDTO> favoriteFeed();
 
+    void newLike(int userId, int photoId);
+
+    int numberOfLikes(int photoId);
+
+
+
+
 
 
 }
