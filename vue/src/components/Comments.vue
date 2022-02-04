@@ -1,10 +1,10 @@
 <template>
   <div>
+    <a href="#" id="show-comment-button">ShowComments</a>
 
-      <!-- not sure if we need this component anymore -->
+      
     <form>
-      <input type="text" placeholder="add a comment..." />
-      <button>Comment</button>
+      
     </form>
   </div>
 </template>
