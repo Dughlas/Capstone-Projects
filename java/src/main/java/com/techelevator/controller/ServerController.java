@@ -39,7 +39,7 @@ public class ServerController {
         postDao.createNewPost(postablePost);
     }
 
-    @RequestMapping(path="/viewPosts/username", method = RequestMethod.GET)
+    @RequestMapping(path="/viewPosts/{username}", method = RequestMethod.GET)
     public List<PostDTO> viewUserPosts(@PathVariable("username") String username) {
         int id = userDao.findIdByUsername(username);
         return postDao.getAllPostsByUser(id);
@@ -50,7 +50,7 @@ public class ServerController {
         return postDao.photoFeed();
     }
 
-    @RequestMapping(path="/viewComments/photoId", method = RequestMethod.GET)
+    @RequestMapping(path="/viewComments/{photoId}", method = RequestMethod.GET)
     public List<CommentDTO> viewPostComments(@PathVariable("photoId") int photoId){
         return commentDao.getAllCommentsByPhotoId(photoId);
     }
@@ -59,10 +59,12 @@ public class ServerController {
     public void createComment(@RequestBody CommentDTO createdComment) {
         int userId = userDao.findIdByUsername(createdComment.getUsername());
         String comment = createdComment.getComment();
+        int photoId = createdComment.getPhotoId();
 
         CommentDTO sendComment = new CommentDTO();
         sendComment.setUserId(userId);
         sendComment.setComment(comment);
+        sendComment.setPhotoId(photoId);
 
         commentDao.createNewComment(sendComment);
     }
