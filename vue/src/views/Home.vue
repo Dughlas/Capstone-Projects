@@ -56,6 +56,7 @@
     <div class="flex-container">
        <div v-for="pic in pictures" :key="pic.id">
                <p><img :src="pic.url" width="300" length="300" alt="" /></p>
+               {{pic.username}}
        </div>
     </div>
     </div>
