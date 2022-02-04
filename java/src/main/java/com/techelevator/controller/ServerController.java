@@ -54,4 +54,19 @@ public class ServerController {
     public List<CommentDTO> viewPostComments(@PathVariable("photoId") int photoId){
         return commentDao.getAllCommentsByPhotoId(photoId);
     }
+
+    @RequestMapping(path="/addComment", method = RequestMethod.POST)
+    public void createComment(@RequestBody CommentDTO createdComment) {
+        int userId = userDao.findIdByUsername(createdComment.getUsername());
+        String comment = createdComment.getComment();
+
+        CommentDTO sendComment = new CommentDTO();
+        sendComment.setUserId(userId);
+        sendComment.setComment(comment);
+
+        commentDao.createNewComment(sendComment);
+    }
+
+
+
 }

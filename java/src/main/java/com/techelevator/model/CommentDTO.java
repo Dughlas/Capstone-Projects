@@ -4,7 +4,10 @@ public class CommentDTO {
 
     private int commentId;
     private int photoId;
+    private String photoUrl;
+    private String username;
     private String comment;
+    private int userId;
 
     public CommentDTO(){}
 
@@ -38,4 +41,27 @@ public class CommentDTO {
         this.comment = comment;
     }
 
+    public String getPhotoUrl() {
+        return photoUrl;
+    }
+
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
 }
