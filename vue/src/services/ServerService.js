@@ -12,8 +12,11 @@ export default {
     addNewComment(userComment){
         return axios.post('/addComment', userComment)
     },
-    list(username) {
+    listByUser(username) {
         return axios.get(`/viewPosts/${username}`);
+    },
+    listAll() {
+        return axios.get('/homeFeed')
     }
 
 }
