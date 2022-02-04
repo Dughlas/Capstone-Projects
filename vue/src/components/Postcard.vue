@@ -1,7 +1,28 @@
 <template>
   <div class="post">
-    <h3>{{ this.$store.state.user.username }}</h3>
-    <img src="" alt="" />
+
+
+  <div class="main-flex-container">
+    <div class="flex-container">
+       <div v-for="pic in pictures" :key="pic.id">
+
+          <h3>{{ this.$store.state.user.username }}</h3>
+
+
+               <p><img :src="pic.url" width="300" length="300" alt="" /></p>
+               <p><a class="navigation-link notifica">
+      <i class="far fa-heart">
+        <div class="notification-bubble-wrapper">
+          <div class="notification-bubble">
+            <span class="notifications-count">99</span>
+          </div>
+        </div>
+      </i>
+    </a></p>
+       </div>
+    </div>
+    </div>
+
 
     <div class="btn">
       buttons go here
@@ -18,7 +39,7 @@
 
       <form v-if="showForm === true" v-on:submit.prevent="addComment">
         <input type="text" placeholder="add a comment..." />
-        <input type="submit" value="Comment" />
+        <input type="submit" value="Comment" v-show = false />
       </form>
     </div>
 
