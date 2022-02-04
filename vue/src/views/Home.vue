@@ -146,7 +146,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  padding: 0px 50px;
+  padding: 10px 50px;
   box-sizing: border-box;
   z-index: 2;
   /* animation magic */

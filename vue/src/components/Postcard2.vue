@@ -10,7 +10,9 @@
             <p><img :src="pic.url" width="300" length="300" alt="" /></p>
 
             <p class="caption">{{pic.caption}}</p>
-
+            <div v-bind:src="pic">
+              <comments v-bind:src="pic"/>
+            </div>
             <p>
               <a class="navigation-link notifica">
                 <i class="far fa-heart">
@@ -32,8 +34,13 @@
 </template>
 
 <script>
+import Comments from "../components/Comments.vue"
+import serverService from "../services/ServerService.js"
 export default {
     name: "postcard-2",
+    components: {
+      Comments
+    },
     
      data() {
     return {
@@ -57,5 +64,19 @@ export default {
 </script>
 
 <style>
+
+.main-flex-container {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(245, 245, 240);
+  padding: 10px;
+  margin: 20px;
+}
+.flex-container > div {
+  background-color: #F1F1F1;
+  margin: 10px;
+  padding: 20px;
+  font-size: 30px;
+}
 
 </style>
