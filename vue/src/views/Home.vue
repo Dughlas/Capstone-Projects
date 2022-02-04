@@ -1,58 +1,77 @@
 <template>
   <div class="navigation">
-  <div class="logo">
-    <a class="no-underline" href="#">
-      TE-gram capstone
-    </a>
-  </div>
-  <router-link v-bind:to="{ name: 'uploadPhoto' }">Upload New Photo</router-link> <br/>
-      <router-link v-bind:to="{ name: 'myProfile' }">My Profile</router-link>
-  <div class="navigation-search-container">
-    <i class="fa fa-search"></i>
-    <input class="search-field" type="text" placeholder="Search">
-    <div class="search-container">
-      <div class="search-container-box">
-        <div class="search-results">
-
+    <div class="logo">
+      <a class="no-underline" href="#"> TE-gram capstone </a>
+    </div>
+    <router-link v-bind:to="{ name: 'uploadPhoto' }"
+      >Upload New Photo</router-link
+    >
+    <br />
+    <router-link v-bind:to="{ name: 'myProfile' }">My Profile</router-link>
+    <div class="navigation-search-container">
+      <i class="fa fa-search"></i>
+      <input class="search-field" type="text" placeholder="Search" />
+      <div class="search-container">
+        <div class="search-container-box">
+          <div class="search-results"></div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="navigation-icons">
-    <a href="https://instagram.com/mimoudix" target ="_blank" class="navigation-link">
-      <i class="far fa-compass"></i>
-    </a>
-    <a class="navigation-link notifica">
-      <i class="far fa-heart">
-        <div class="notification-bubble-wrapper">
-          <div class="notification-bubble">
-            <span class="notifications-count">99</span>
+    <div class="navigation-icons">
+      <a
+        href="https://instagram.com/mimoudix"
+        target="_blank"
+        class="navigation-link"
+      >
+        <i class="far fa-compass"></i>
+      </a>
+      <a class="navigation-link notifica">
+        <i class="far fa-heart">
+          <div class="notification-bubble-wrapper">
+            <div class="notification-bubble">
+              <span class="notifications-count">99</span>
+            </div>
           </div>
-        </div>
-      </i>
-    </a>
-    <a href="https://instagram.com/mimoudix" class="navigation-link">
-      <i class="far fa-user-circle"></i>
-    </a>
-    <a href="https://instagram.com/mimoudix" id="signout" class="navigation-link">
-      <i class="fas fa-sign-out-alt"></i>
-    </a>
+        </i>
+      </a>
+      <a href="https://instagram.com/mimoudix" class="navigation-link">
+        <i class="far fa-user-circle"></i>
+      </a>
+      <a
+        href="https://instagram.com/mimoudix"
+        id="signout"
+        class="navigation-link"
+      >
+        <i class="fas fa-sign-out-alt"></i>
+      </a>
+    </div>
+
+    <div v-for="pic in pictures" :key="pic.id">
+      <p><img :src="pic.url" width="100" alt="" /></p>
+    </div>
   </div>
-</div>
 </template>
 
 
 <script>
-
+import serverService from "../services/ServerService.js";
 export default {
-
-  
-
-}
+  data() {
+    return {
+      pictures: [],
+    };
+  },
+  created() {
+    serverService.list(this.$store.state.user.username).then((response) => {
+      console.log(response.data);
+      this.pictures = response.data;
+    });
+  }
+};
 </script>
 
 <style>
-@import url('//fonts.cdnfonts.com/css/billabong');
+@import url("//fonts.cdnfonts.com/css/billabong");
 body {
   background: #fafafa;
 }
