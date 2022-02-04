@@ -15,5 +15,4 @@ public interface PostDao {
     List<PostDTO> favoriteFeed();
 
 
-
 }
