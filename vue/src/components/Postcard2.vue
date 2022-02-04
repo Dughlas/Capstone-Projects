@@ -2,6 +2,7 @@
 
 <div>
  <section>
+
       <div class="main-flex-container">
         <div class="flex-container">
           <div v-for="pic in allPictures" :key="pic.id">
@@ -26,12 +27,17 @@
         </div>
       </div>
     </section>
+
+    
+
 </div>
 
     
 </template>
 
 <script>
+import serverService from "../services/ServerService.js";
+
 export default {
     name: "postcard-2",
     
@@ -57,5 +63,20 @@ export default {
 </script>
 
 <style>
+
+.main-flex-container {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(245, 245, 240);
+}
+
+.flex-container > div {
+  background-color: #f1f1f1;
+  margin: 10px;
+  padding: 20px;
+  font-size: 30px;
+}
+
+
 
 </style>
