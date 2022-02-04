@@ -102,7 +102,7 @@ public class JdbcPostDao implements PostDao{
         return userPosts;
     }
 
-<<<<<<< HEAD
+
     @Override
     public void newLike(int userId, int photoId) {
         String sql = "INSERT INTO liked_photos (user_id, photo_id)" +
@@ -113,12 +113,11 @@ public class JdbcPostDao implements PostDao{
     @Override
     public int numberOfLikes(int photoId) {
         String sql = "SELECT COUNT(*) FROM liked_photos " +
-                ""
+                "";
 
         return 0;
     }
 
-=======
->>>>>>> main
+
 
 }
