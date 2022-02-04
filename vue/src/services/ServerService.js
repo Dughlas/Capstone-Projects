@@ -8,6 +8,12 @@ export default {
     },
     addNewPic(userPost){
         return axios.post('/addPost', userPost)
+    },
+    addNewComment(userComment){
+        return axios.post('/addComment', userComment)
+    },
+    list(username) {
+        return axios.get(`/viewPosts/${username}`);
     }
 
 }

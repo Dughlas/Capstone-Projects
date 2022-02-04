@@ -1,13 +1,11 @@
 <template>
   <div>
       <!-- place photo thumbnail here -->
-      <img v-bind:src="$store.state.upload.url" alt="photo thumbnail?"/> <br/>
+      <img v-bind:src="$store.state.upload.url" alt="photo thumbnail"/> <br/>
       <form v-on:submit.prevent='newPost'>
       <input type="text" v-model="newPic.caption" placeholder="caption your photo" />
       <input type="submit"/>
       </form>
-      {{userId}}
-      {{url}}
   </div>
 </template>
 
