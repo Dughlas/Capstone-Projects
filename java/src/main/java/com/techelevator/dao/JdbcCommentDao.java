@@ -19,7 +19,7 @@ public class JdbcCommentDao implements CommentDao{
         String comment = newComment.getComment();
         String sql = "INSERT INTO comments(comment, user_id) " +
                 "VALUES(?,?)";
-        int id = template.queryForObject(sql,Integer.class,userId,comment);
+        int id = template.queryForObject(sql,Integer.class,comment,userId);
 
 
     }
