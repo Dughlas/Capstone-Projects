@@ -2,7 +2,7 @@
   <div class="navigation">
   <div class="logo">
     <a class="no-underline" href="#">
-      TE-gram capstone
+      TE-gram
     </a>
   </div>
   <router-link v-bind:to="{ name: 'uploadPhoto' }">Upload New Photo</router-link> <br/>
