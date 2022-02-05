@@ -5,7 +5,7 @@
     <div class="float-container">
 
         <div class="float-child">
-           <img alt="Vue logo" src="../images/te-gram.png">
+           <img alt="Vue logo" src="../assets/te-gram.jpg">
         </div>
   
         <div class="float-child">
