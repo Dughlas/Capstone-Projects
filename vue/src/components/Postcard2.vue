@@ -12,9 +12,11 @@
             <div v-bind:src="pic"></div>
 
             <!-- call buttons here -->
-            <add-comments v-bind:pic-id="pic.photoId" />
-            <view-comments v-bind:pic-id="pic.photoId" />
-            <like-button v-bind:pic-id="pic.photoId" />
+            <div class="buttons">
+              <add-comments v-bind:pic-id="pic.photoId" />
+              <view-comments v-bind:pic-id="pic.photoId" />
+              <like-button v-bind:pic-id="pic.photoId" />
+            </div>
           </div>
         </div>
       </div>
