@@ -17,6 +17,9 @@ export default {
     },
     listAll() {
         return axios.get('/homeFeed')
+    },
+    listCommentsByPhoto(photoId) {
+        return axios.get(`/viewComments/${photoId}`)
     }
 
 }

@@ -53,10 +53,11 @@
 
 
 <div>
+  <!-- Pictures below -->
   <postcard-2/>
 </div>
 
-    <!-- Pictures below -->
+    
    
   </div>
 </template>
