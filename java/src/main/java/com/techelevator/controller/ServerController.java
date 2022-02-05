@@ -4,6 +4,7 @@ import com.techelevator.dao.CommentDao;
 import com.techelevator.dao.PostDao;
 import com.techelevator.dao.UserDao;
 import com.techelevator.model.CommentDTO;
+import com.techelevator.model.LikeDTO;
 import com.techelevator.model.PostDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -67,6 +68,18 @@ public class ServerController {
         sendComment.setPhotoId(photoId);
 
         commentDao.createNewComment(sendComment);
+    }
+
+    @RequestMapping(path="/addLike", method = RequestMethod.POST)
+    public void addLike(@RequestBody LikeDTO addedLike) {
+        int userId = userDao.findIdByUsername(addedLike.getUsername());
+
+        LikeDTO newLike = new LikeDTO();
+        newLike.setPhotoId(addedLike.getPhotoId());
+        newLike.setUserId(userId);
+
+        postDao.newLike(newLike);
+
     }
 
 

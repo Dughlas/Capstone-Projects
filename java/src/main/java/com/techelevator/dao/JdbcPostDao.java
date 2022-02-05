@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.LikeDTO;
 import com.techelevator.model.PostDTO;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -103,9 +104,12 @@ public class JdbcPostDao implements PostDao{
     }
 
     @Override
-    public void newLike(int userId, int photoId) {
+    public void newLike(LikeDTO newLike) {
         String sql = "INSERT INTO liked_photos (user_id, photo_id)" +
                 "VALUES (?,?)";
+        int userId = newLike.getUserId();
+        int photoId = newLike.getPhotoId();
+
         template.update(sql, userId, photoId);
     }
 
