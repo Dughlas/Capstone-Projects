@@ -1,6 +1,7 @@
 <template>
   <div class="main-comment-containter">
     <div v-for="comment in allComments" :key="comment.id">
+      {{comment.commentId}}
       <div>{{ comment.username }}</div>
       <div>{{ comment.comment }}</div>
     </div>
