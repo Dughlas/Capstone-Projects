@@ -1,89 +1,116 @@
 <template>
- 
-  <div > 
+  <div>
     <!-- class="navigation" -->
-     <nav>
-       <div class="navigation">
-          <div class="logo">
-            <a class="no-underline" href="#">TE-gram</a>
-       </div>
-  <router-link v-bind:to="{ name: 'uploadPhoto' }">Upload New Photo</router-link> <br/>
-      <!-- <router-link v-bind:to="{ name: 'myProfile' }">My Profile</router-link> -->
-  <div class="navigation-search-container">
-    <i class="fa fa-search"></i>
-    <input class="search-field" type="text" placeholder="Search">
-    <div class="search-container">
-      <div class="search-container-box">
-        <div class="search-results">
-
+    <nav>
+      <div class="navigation">
+        <div class="logo">
+          <a class="no-underline" href="#">TE-gram</a>
         </div>
-      </div>
-    </div>
-  </div>
-  <div class="navigation-icons">
-    <a href="" target ="_blank" class="navigation-link">
-      <i class="fa fa-home"></i>
-    </a>
-    <a href="" target ="_blank" class="navigation-link">
-      <i class="fa fa-plus-square" ></i>
-    </a>  
-    <a class="navigation-link notifica">
-      <i class="far fa-heart">
-        <div class="notification-bubble-wrapper">
-          <div class="notification-bubble">
-            <span class="notifications-count">99</span>
+        <router-link v-bind:to="{ name: 'uploadPhoto' }"
+          >Upload New Photo</router-link
+        >
+        <br />
+        <!-- <router-link v-bind:to="{ name: 'myProfile' }">My Profile</router-link> -->
+        <div class="navigation-search-container">
+          <i class="fa fa-search"></i>
+          <input class="search-field" type="text" placeholder="Search" />
+          <div class="search-container">
+            <div class="search-container-box">
+              <div class="search-results"></div>
+            </div>
           </div>
         </div>
-      </i>
-    </a>
-    <a href="" class="navigation-link">
-      <i class="far fa-user-circle"></i>
-    </a>
-    <a href="" id="signout" class="navigation-link">
-      <i class="fas fa-sign-out-alt"></i>
-    </a>
-  </div>
-       </div>
-     </nav>
- 
-   <div>
-     <div></div>
-   </div>
- 
-  <!-- Pictures below -->
-  <section>
-    <div class="main-flex-container">
-    <div class="flex-container">
-       <div v-for="pic in pictures" :key="pic.id">
-               <p><img :src="pic.url" width="300" length="300" alt="" /></p>
-       </div>
+        <div class="navigation-icons">
+          <a href="" target="_blank" class="navigation-link">
+            <i class="fa fa-home"></i>
+          </a>
+          <a href="" target="_blank" class="navigation-link">
+            <i class="fa fa-plus-square"></i>
+          </a>
+          <a class="navigation-link notifica">
+            <i class="far fa-heart">
+              <div class="notification-bubble-wrapper">
+                <div class="notification-bubble">
+                  <span class="notifications-count">99</span>
+                </div>
+              </div>
+            </i>
+          </a>
+          <a href="" class="navigation-link">
+            <i class="far fa-user-circle"></i>
+          </a>
+          <a href="" id="signout" class="navigation-link">
+            <i class="fas fa-sign-out-alt"></i>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <div>
+      <div></div>
     </div>
-    </div>
-  </section>
-   
 
 
+
+<div>
+  <postcard-2/>
 </div>
 
-          
-      
+    <!-- Pictures below -->
+    <section>
+      <div class="main-flex-container">
+        <div class="flex-container">
+          <div v-for="pic in allPictures" :key="pic.id">
+            <p class="poster-name">{{ pic.username }}</p>
+
+            <p><img :src="pic.url" width="300" length="300" alt="" /></p>
+
+            <p class="caption">{{pic.caption}}</p>
+
+            <p>
+              <a class="navigation-link notifica">
+                <i class="far fa-heart">
+                  <div class="notification-bubble-wrapper">
+                    <div class="notification-bubble">
+                      <span class="notifications-count">99</span>
+                    </div>
+                  </div>
+                </i>
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 </template>
 
 
 <script>
 import serverService from "../services/ServerService.js";
+import Postcard2 from "../components/Postcard2.vue"
 export default {
+  components: {
+    Postcard2
+  },
   data() {
     return {
       pictures: [],
+      allPictures: []
     };
   },
   created() {
-    serverService.list(this.$store.state.user.username).then((response) => {
-      console.log(response.data);
-      this.pictures = response.data;
-    });
-  }
+    serverService.listByUser(this.$store.state.user.username).then(
+      (response) => {
+        console.log(response.data);
+        this.pictures = response.data;
+      },
+      serverService.listAll().then((response) => {
+        console.log(response.data);
+        this.allPictures = response.data;
+      })
+    );
+  },
 };
 </script>
 
@@ -93,12 +120,11 @@ body {
   background: #fafafa;
 }
 
-.main-flex-container{
- display: flex;
+.main-flex-container {
+  display: flex;
   justify-content: center;
   background-color: rgb(245, 245, 240);
 }
-
 
 .flex-container > div {
   background-color: #f1f1f1;
@@ -120,7 +146,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  padding: 0px 50px;
+  padding: 10px 50px;
   box-sizing: border-box;
   z-index: 2;
   /* animation magic */
