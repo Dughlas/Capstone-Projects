@@ -112,7 +112,7 @@ public class JdbcPostDao implements PostDao{
     @Override
     public int numberOfLikes(int photoId) {
         String sql = "SELECT COUNT(*) FROM liked_photos " +
-                ""
+                "";
 
         return 0;
     }
