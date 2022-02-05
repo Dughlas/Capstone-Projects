@@ -73,26 +73,14 @@ export default {
   display: flex;
   justify-content: center;
   background-color: rgb(245, 245, 240);
-<<<<<<< HEAD
-}
-
-.flex-container > div {
-  background-color: #f1f1f1;
-=======
   padding: 10px;
   margin: 20px;
 }
 .flex-container > div {
   background-color: #F1F1F1;
->>>>>>> main
   margin: 10px;
   padding: 20px;
   font-size: 30px;
 }
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> main
 </style>
