@@ -102,7 +102,6 @@ public class JdbcPostDao implements PostDao{
         return userPosts;
     }
 
-
     @Override
     public void newLike(int userId, int photoId) {
         String sql = "INSERT INTO liked_photos (user_id, photo_id)" +
@@ -117,7 +116,6 @@ public class JdbcPostDao implements PostDao{
 
         return 0;
     }
-
 
 
 }
