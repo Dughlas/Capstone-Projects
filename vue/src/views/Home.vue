@@ -6,8 +6,7 @@
         <div class="logo">
           <a class="no-underline" href="#">TE-gram</a>
         </div>
-        <router-link v-bind:to="{ name: 'uploadPhoto' }"
-          >Upload New Photo</router-link
+
         >
         <br />
         <!-- <router-link v-bind:to="{ name: 'myProfile' }">My Profile</router-link> -->
@@ -22,11 +21,17 @@
         </div>
         <div class="navigation-icons">
           <a href="" target="_blank" class="navigation-link">
-            <i class="fa fa-home"></i>
+            <router-link
+              v-bind:to="{ name: 'Home' }"
+              tag="i"
+              class="fa fa-home"
+            ></router-link>
+            
           </a>
-          <a href="" target="_blank" class="navigation-link">
-            <i class="fa fa-plus-square"></i>
-          </a>
+      <a href="" class="navigation-link">
+                  <router-link v-bind:to="{ name: 'uploadPhoto' }" tag='i' class='fa fa-plus-square'></router-link>
+                </a>
+
           <a class="navigation-link notifica">
             <i class="far fa-heart">
               <div class="notification-bubble-wrapper">
@@ -50,25 +55,20 @@
       <div></div>
     </div>
 
-
-
-<div>
-  <!-- Pictures below -->
-  <postcard-2/>
-</div>
-
-    
-   
+    <div>
+      <!-- Pictures below -->
+      <postcard-2 />
+    </div>
   </div>
 </template>
 
 
 <script>
-import Postcard2 from "../components/Postcard2.vue"
+import Postcard2 from "../components/Postcard2.vue";
 export default {
   components: {
-    Postcard2
-  }
+    Postcard2,
+  },
 };
 </script>
 
