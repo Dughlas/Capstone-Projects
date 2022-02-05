@@ -1,5 +1,15 @@
 <template>
+
   <div id="login" class="text-center">
+
+    <div class="float-container">
+
+        <div class="float-child">
+           <img alt="Vue logo" src="../images/te-gram.png">
+        </div>
+  
+        <div class="float-child">
+          <!-- Login form start here -->
     <form class="form-signin" @submit.prevent="login">
       <h1 class="h3 mb-3 font-weight-normal">TE-gram</h1>
       <div
@@ -42,6 +52,11 @@
       <router-link :to="{ name: 'register' }">Sign up</router-link>
       
     </form>
+        </div>
+  
+  </div>
+
+ 
   </div>
 </template>
 
@@ -53,7 +68,7 @@ export default {
   components: {},
   data() {
     return {
-      user: {
+        user: {
         username: "",
         password: ""
       },
@@ -84,11 +99,28 @@ export default {
 </script>
 
 <style scoped>
-@import url('//fonts.cdnfonts.com/css/billabong');
+@import url('//fonts.cdnfonts.com/css/billabong'); 
+
+.float-container {
+    border: 1px solid #fff;
+    /* padding: 2px; */
+     display: flex;
+     justify-content: center;
+}
+
+.float-child {
+   display: flex;
+    margin: 5px;
+    width: 25%;
+    /* align-content: center; */
+    /* float: left; */
+    /* padding: 0px; */
+    /* border: 2px solid red; */
+}  
 #login {
   /* background-image: url("../assets/background.jpg"); 
   background-size: cover; */
-  background-color: #FFFAFA;
+  background-color: #fcf7f7;
   position: absolute;
   top: 95px;
   right: 0px;
