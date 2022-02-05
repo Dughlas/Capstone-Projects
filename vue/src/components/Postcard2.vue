@@ -9,12 +9,12 @@
             <p><img :src="pic.url" width="300" length="300" alt="" /></p>
 
             <p class="caption">{{ pic.caption }}</p>
-            <div v-bind:src="pic">
-              <add-comments v-bind:pic-id="pic.photoId" />
-              <view-comments v-bind:pic-id="pic.photoId" />
-            </div>
+            <div v-bind:src="pic"></div>
+
             <!-- call buttons here -->
-            <buttons />
+            <add-comments v-bind:pic-id="pic.photoId" />
+            <view-comments v-bind:pic-id="pic.photoId" />
+            <like-button v-bind:pic-id="pic.photoId" />
           </div>
         </div>
       </div>
@@ -25,14 +25,15 @@
 <script>
 import AddComments from "../components/AddComments.vue";
 import serverService from "../services/ServerService.js";
-import Buttons from "../components/Buttons.vue";
 import ViewComments from "../components/ViewComments.vue";
+import LikeButton from "../components/LikeButton.vue";
+
 export default {
   name: "postcard-2",
   components: {
     AddComments,
-    Buttons,
     ViewComments,
+    LikeButton,
   },
 
   data() {

@@ -1,13 +1,6 @@
 <template>
   <div>
-    <span>
-      <button>
-        <i
-          class="far fa-thumbs-up"
-          data-fa-transform="shrink-10 up-.5"
-          data-fa-mask="fas fa-comment"
-        ></i></button
-    ></span>
+    
     <span>
       <button>
         <i

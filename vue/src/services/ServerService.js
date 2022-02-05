@@ -20,6 +20,9 @@ export default {
     },
     listCommentsByPhoto(photoId) {
         return axios.get(`/viewComments/${photoId}`)
+    },
+    addLike(userLike) {
+        return axios.post('/addLike', userLike)
     }
 
 }
