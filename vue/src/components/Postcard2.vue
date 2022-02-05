@@ -4,15 +4,15 @@
  <section>
       <div class="main-flex-container">
         <div class="flex-container">
-          <div v-for="pic in allPictures" :key="pic.id">
+          <div v-for="pic in allPictures" :key="pic.Id">
             <p class="poster-name">{{ pic.username }}</p>
 
             <p><img :src="pic.url" width="300" length="300" alt="" /></p>
 
             <p class="caption">{{pic.caption}}</p>
             <div v-bind:src="pic">
-              <comments v-bind:src="pic"/>
-            </div>
+              <comments v-bind:pic-id ='pic.photoId'/>
+              </div>
             <p>
               <a class="navigation-link notifica">
                 <i class="far fa-heart">

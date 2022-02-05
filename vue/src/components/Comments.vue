@@ -1,14 +1,14 @@
 <template>
   <div>
-    <button
+    <a
       id="show-form-button"
       href="#"
      v-on:click="showForm = true"
-    >Show Form</button>
+    >Show Form{{picId}}</a>
     
 
       
-    <form v-on:submit.prevent="addComment" v-if="showForm === true" class = "comment-form" v-bind:src="pic.id">
+    <form v-on:submit.prevent="addComment" v-if="showForm === true" class = "comment-form" >
 
      <div class="form-element"> <input id="comment" type="text" v-model="comment.comment" /></div>
 
@@ -23,12 +23,13 @@
 import ServerService from "../services/ServerService";
 export default {
   name: "comments",
+  props:['picId'],
   data() {
     return {
       showForm: false,
-      comment: {
-        //photoId: this., 
+      comment: { 
         username: this.$store.state.user.username,
+        photoId: this.picId,
       },
     };
   },
