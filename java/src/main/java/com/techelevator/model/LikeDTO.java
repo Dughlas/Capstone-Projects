@@ -6,6 +6,7 @@ public class LikeDTO {
     private int userId;
     private int photoId;
     private String username;
+    private int numberOfLikes;
 
     public LikeDTO() {
     }
@@ -14,6 +15,14 @@ public class LikeDTO {
         this.likeId = likeId;
         this.userId = userId;
         this.photoId = photoId;
+    }
+
+    public LikeDTO(int numberOfLikes) {
+        this.numberOfLikes = numberOfLikes;
+    }
+
+    public int getNumberOfLikes() {
+        return numberOfLikes;
     }
 
     public String getUsername() {

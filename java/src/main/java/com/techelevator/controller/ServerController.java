@@ -26,6 +26,7 @@ public class ServerController {
     @Autowired
     CommentDao commentDao;
 
+
     @RequestMapping(path="/addPost", method = RequestMethod.POST)
     public void createPost(@RequestBody PostDTO newPost) {
         int id = userDao.findIdByUsername(newPost.getUsername());
@@ -80,6 +81,11 @@ public class ServerController {
 
         postDao.newLike(newLike);
 
+    }
+
+    @RequestMapping(path="/countLike/{photoId}", method = RequestMethod.GET)
+    public int numberOfLikes (@PathVariable("photoId") int photoId){
+        return postDao.numberOfLikes(photoId);
     }
 
 

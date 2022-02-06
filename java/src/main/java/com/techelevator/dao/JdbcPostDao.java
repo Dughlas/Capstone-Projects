@@ -115,10 +115,9 @@ public class JdbcPostDao implements PostDao{
 
     @Override
     public int numberOfLikes(int photoId) {
-        String sql = "SELECT COUNT(*) FROM liked_photos " +
-                "";
-
-        return 0;
+        String sql = "SELECT COUNT(*) FROM liked_photos WHERE photo_id = ?";
+        int count = template.queryForObject(sql, Integer.class, photoId);
+        return count;
     }
 
 
