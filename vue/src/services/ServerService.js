@@ -23,6 +23,9 @@ export default {
     },
     addLike(userLike) {
         return axios.post('/addLike', userLike)
+    },
+    likeCount() {
+        return axios.get()
     }
 
 }
