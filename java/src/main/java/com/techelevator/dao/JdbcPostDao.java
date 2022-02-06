@@ -103,6 +103,10 @@ public class JdbcPostDao implements PostDao{
         return userPosts;
     }
 
+//    public void newFavorite() {
+//        String sql = "Insert INTO favorites "
+//    }
+
     @Override
     public void newLike(LikeDTO newLike) {
         String sql = "INSERT INTO liked_photos (user_id, photo_id)" +
@@ -118,6 +122,17 @@ public class JdbcPostDao implements PostDao{
         String sql = "SELECT COUNT(*) FROM liked_photos WHERE photo_id = ?";
         int count = template.queryForObject(sql, Integer.class, photoId);
         return count;
+    }
+
+    @Override
+    public void deleteLike(LikeDTO deleteLike) {
+        String sql = "DELETE FROM liked_photos (user_id, photo_id) " +
+                "VALUES (?,?)";
+
+        int userId = deleteLike.getUserId();
+        int photoId = deleteLike.getPhotoId();
+
+        template.update(sql, userId, photoId);
     }
 
 

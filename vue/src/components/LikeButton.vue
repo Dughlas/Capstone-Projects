@@ -1,13 +1,16 @@
 <template>
   <div>
     <span>
-      <button>
+      <button
+      v-on:click="addLike()"
+      v-on:dblclick="subtractLike()">
         <i
           class="far fa-thumbs-up"
           data-fa-transform="shrink-10 up-.5"
           data-fa-mask="fas fa-comment"
         ></i></button
     ></span>
+    {{this.likeCount}}
   </div>
 </template>
 
@@ -18,14 +21,19 @@ export default {
   props: ["picId"],
   data() {
     return {
+      likeCount: 0,
       like: {
         username: this.$store.state.user.username,
         photoId: this.picId,
-      },
+      }
     };
   },
   created() {
-    ServerService.addLike(this.like).then(() => {});
+    ServerService.addLike(this.like).then(() => {}),
+    ServerService.likeCount(this.like.photoId).then((respsonse) => {
+      this.likeCount = respsonse.data;
+    }),
+    ServerService.subtractLike(this.like).then(() => {})
   },
 };
 </script>

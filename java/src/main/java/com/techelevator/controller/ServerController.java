@@ -7,6 +7,7 @@ import com.techelevator.model.CommentDTO;
 import com.techelevator.model.LikeDTO;
 import com.techelevator.model.PostDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.relational.core.sql.In;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
@@ -84,9 +85,10 @@ public class ServerController {
     }
 
     @RequestMapping(path="/countLike/{photoId}", method = RequestMethod.GET)
-    public int numberOfLikes (@PathVariable("photoId") int photoId){
-        return postDao.numberOfLikes(photoId);
+    public int numberOfLikes (@PathVariable("photoId") String photoId){
+        return postDao.numberOfLikes(Integer.parseInt(photoId));
     }
+
 
 
 

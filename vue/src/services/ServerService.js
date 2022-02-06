@@ -24,8 +24,14 @@ export default {
     addLike(userLike) {
         return axios.post('/addLike', userLike)
     },
-    likeCount() {
-        return axios.get()
+    subtractLike(userLike) {
+        return axios.post( '/addLike', userLike)
+    },
+    likeCount(photoId) {
+        return axios.get(`/countLike/${photoId}`)
+    },
+    addToFavorites(favorite) {
+        return axios.post(`addToFavorites`, favorite)
     }
 
 }

@@ -19,6 +19,8 @@ public interface PostDao {
 
     int numberOfLikes(int photoId);
 
+    void deleteLike(LikeDTO deleteLike);
+
 
 
 
