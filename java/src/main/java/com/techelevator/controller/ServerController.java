@@ -1,9 +1,11 @@
 package com.techelevator.controller;
 
 import com.techelevator.dao.CommentDao;
+import com.techelevator.dao.FavoriteDAO;
 import com.techelevator.dao.PostDao;
 import com.techelevator.dao.UserDao;
 import com.techelevator.model.CommentDTO;
+import com.techelevator.model.FavoriteDTO;
 import com.techelevator.model.LikeDTO;
 import com.techelevator.model.PostDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
 import javax.xml.stream.events.Comment;
+import java.security.Principal;
 import java.util.List;
 
 @CrossOrigin
@@ -26,6 +29,9 @@ public class ServerController {
     UserDao userDao;
     @Autowired
     CommentDao commentDao;
+    @Autowired
+    FavoriteDAO favoriteDao;
+    private Principal principal;
 
 
     @RequestMapping(path="/addPost", method = RequestMethod.POST)
@@ -111,6 +117,21 @@ public class ServerController {
         return postDao.isItLiked(newLikeDto);
     }
 
+    @RequestMapping(path="/myFavorites", method = RequestMethod.GET)
+    public List<PostDTO> favoritesOfUser() {
+        return favoriteDao.favoriteFeed(principal);
+    }
+
+    @RequestMapping(path= "/newFav", method = RequestMethod.POST)
+    public void addFav( @RequestBody FavoriteDTO fav) {
+        int userId = userDao.findIdByUsername(fav.getUsername());
+
+        FavoriteDTO addingFav = new FavoriteDTO();
+        addingFav.setUserId(userId);
+        addingFav.setPhotoId(fav.getPhotoId());
+
+        favoriteDao.addToFavs(addingFav);
+    }
 
 
 

@@ -13,6 +13,7 @@ public class FavoriteDTO {
         this.photoId = photoId;
         this.username = username;
     }
+    public FavoriteDTO(){}
 
     public int getFavoritedId() {
         return favoritedId;
