@@ -8,7 +8,7 @@
               <p><img :src="pic.url" width="500px" length="500px" alt="" /></p>
               <p class="caption">{{ pic.caption }}</p>
               <div v-bind:src="pic"></div>
-
+              
             <!-- call buttons here -->
             <div class="buttons">
                  <like-button v-bind:pic-id="pic.photoId" />

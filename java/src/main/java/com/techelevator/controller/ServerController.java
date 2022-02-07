@@ -89,6 +89,28 @@ public class ServerController {
         return postDao.numberOfLikes(Integer.parseInt(photoId));
     }
 
+    @RequestMapping(path="/removeLike", method = RequestMethod.DELETE)
+    public void subtractLike(@RequestBody LikeDTO subtractedLike) {
+        int userId = userDao.findIdByUsername(subtractedLike.getUsername());
+
+        LikeDTO removedLike = new LikeDTO();
+        removedLike.setUserId(userId);
+        removedLike.setPhotoId(subtractedLike.getPhotoId());
+
+        postDao.deleteLike(removedLike);
+    }
+
+    @RequestMapping(path="/isItLiked", method = RequestMethod.GET)
+    public boolean liked(@RequestBody LikeDTO likeDto) {
+        int userId = userDao.findIdByUsername(likeDto.getUsername());
+
+        LikeDTO newLikeDto = new LikeDTO();
+        newLikeDto.setUserId(userId);
+        newLikeDto.setPhotoId(likeDto.getPhotoId());
+
+        return postDao.isItLiked(newLikeDto);
+    }
+
 
 
 
