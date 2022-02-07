@@ -22,17 +22,17 @@ export default {
   data() {
     return {
       likeCount: 0,
-      isLiked: false,
       like: {
         username: this.$store.state.user.username,
-        photoId: this.picId
+        photoId: this.picId,
+        isLiked: false
       },
     };
   },
   created() {
     ServerService.likeCount(this.like.photoId).then((respsonse) => {
       this.likeCount = respsonse.data;
-      this.isLiked = ServerService.getLikedStatus(this.like)
+      this.like.isLiked = ServerService.getLikedStatus(this.like)
     }
     );
   },
@@ -42,9 +42,9 @@ export default {
         if(!this.isLiked) {
           ServerService.addLike(this.like).then(() => {
         this.likeCount +=1;
-        
+        this.isLiked = true
       });
-          this.isLiked = true
+        
         } else if(this.isLiked) {
             ServerService.subtractLike(this.like).then(() => {});
             this.likeCount -=1;

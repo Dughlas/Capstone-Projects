@@ -11,24 +11,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class JdbcPostDao implements PostDao{
+public class JdbcPostDao implements PostDao {
     private JdbcTemplate template;
 
-    public JdbcPostDao(JdbcTemplate template) {this.template = template;}
-
+    public JdbcPostDao(JdbcTemplate template) {
+        this.template = template;
+    }
 
 
     @Override
     public void createNewPost(PostDTO newPost) {
         int userId = newPost.getUserId();
         String photoUrl = newPost.getUrl();
-        String  caption = newPost.getCaption();
+        String caption = newPost.getCaption();
 
 
-        try{
+        try {
             String sql = "INSERT INTO photos(user_id, photo_url, caption) " +
                     " VALUES (?,?,?) ";
-            int id = template.queryForObject(sql, Integer.class,userId,photoUrl,caption);
+            int id = template.queryForObject(sql, Integer.class, userId, photoUrl, caption);
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -43,7 +44,7 @@ public class JdbcPostDao implements PostDao{
         List<PostDTO> userPosts = new ArrayList<>();
         SqlRowSet result = template.queryForRowSet(sql, userId);
 
-        while(result.next()) {
+        while (result.next()) {
             int photoId = result.getInt("photo_id");
             String photoUrl = result.getString("photo_url");
             String photoCaption = result.getString("caption");
@@ -66,7 +67,7 @@ public class JdbcPostDao implements PostDao{
         List<PostDTO> userPosts = new ArrayList<>();
         SqlRowSet result = template.queryForRowSet(sql);
 
-        while(result.next()) {
+        while (result.next()) {
             int photoId = result.getInt("photo_id");
             String photoUrl = result.getString("photo_url");
             String photoCaption = result.getString("caption");
@@ -89,7 +90,7 @@ public class JdbcPostDao implements PostDao{
         List<PostDTO> userPosts = new ArrayList<>();
         SqlRowSet result = template.queryForRowSet(sql);
 
-        while(result.next()) {
+        while (result.next()) {
             int photoId = result.getInt("photo_id");
             String photoUrl = result.getString("photo_url");
             String photoCaption = result.getString("caption");
@@ -120,7 +121,7 @@ public class JdbcPostDao implements PostDao{
 
     @Override
     public int numberOfLikes(int photoId) {
-        String sql = "SELECT COUNT(*) FROM liked_photos WHERE photo_id = ?";
+        String sql = "SELECT COUNT(*) like_id FROM liked_photos WHERE photo_id = ?";
         int count = template.queryForObject(sql, Integer.class, photoId);
         return count;
     }
@@ -143,7 +144,15 @@ public class JdbcPostDao implements PostDao{
         int userId = likeObject.getUserId();
         int photoId = likeObject.getPhotoId();
 
-        boolean isLiked = template.queryForObject(sql,Boolean.class,userId,photoId);
-        return isLiked;
+        boolean isLiked = false;
+        try {
+            if (template.queryForObject(sql, Boolean.class, userId, photoId) == true) {
+                isLiked = true;
+                return isLiked;
+            }
+        } catch (Exception e) {
+            return isLiked;
+        }
+        return false;
     }
 }

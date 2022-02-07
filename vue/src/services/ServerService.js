@@ -33,8 +33,8 @@ export default {
     addToFavorites(favorite) {
         return axios.post(`addToFavorites`, favorite)
     },
-    getLikedStatus() {
-        return axios.get('/isItLiked')
+    getLikedStatus(currentPost) {
+        return axios.get('/isItLiked', currentPost)
     }
 
 }
