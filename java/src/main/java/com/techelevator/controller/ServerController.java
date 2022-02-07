@@ -31,7 +31,6 @@ public class ServerController {
     CommentDao commentDao;
     @Autowired
     FavoriteDAO favoriteDao;
-    private Principal principal;
 
 
     @RequestMapping(path="/addPost", method = RequestMethod.POST)
@@ -118,8 +117,9 @@ public class ServerController {
     }
 
     @RequestMapping(path="/myFavorites", method = RequestMethod.GET)
-    public List<PostDTO> favoritesOfUser() {
-        return favoriteDao.favoriteFeed(principal);
+    public List<PostDTO> favoritesOfUser(@RequestBody String username) {
+        int id = userDao.findIdByUsername(username);
+        return favoriteDao.favoriteFeed(id);
     }
 
     @RequestMapping(path= "/newFav", method = RequestMethod.POST)

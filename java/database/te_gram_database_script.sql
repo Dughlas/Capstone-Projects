@@ -35,9 +35,8 @@ CREATE TABLE liked_photos (
 liked_id serial,
 user_id int,
 photo_id int,
-is_liked boolean,
 
-constraint pk_favorites primary key(liked_id),
+constraint pk_liked_photos primary key(liked_id),
 constraint fk_liked_photos_user_id foreign key(user_id) references users(user_id),
 constraint fk_liked_photos foreign key(photo_id) references photos(photo_id)
 

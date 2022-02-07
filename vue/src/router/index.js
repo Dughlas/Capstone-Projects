@@ -8,6 +8,7 @@ import store from '../store/index'
 import UploadPhoto from '../views/UploadPhoto.vue'
 import MyProfile from '../views/MyProfile.vue'
 import CaptionPhoto from '../views/CaptionPhoto.vue'
+import FavoriteFeed from '../views/FavoriteFeed.vue'
 
 Vue.use(Router)
 
@@ -76,6 +77,14 @@ const router = new Router({
       path: "/captionPhoto",
       name: "captionPhoto",
       component: CaptionPhoto,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/myFavorites",
+      name: "favoriteFeed",
+      component: FavoriteFeed,
       meta: {
         requiresAuth: true
       }

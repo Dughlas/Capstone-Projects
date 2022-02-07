@@ -22,15 +22,13 @@ public class JdbcFavoriteDAO  implements FavoriteDAO{
     }
 
 
-    public List<PostDTO> favoriteFeed(Principal principal) {
-        String username = principal.getName();
-        int userId = userDao.findIdByUsername(principal.getName());
-        String sql = "Select f.photo_id, p.photo_url, u.username, p.caption from favorites f \n" +
-                "join photos p on f.photo_id = p.photo_id\n" +
-                "join users u on p.user_id = u.user_id\n" +
+    public List<PostDTO> favoriteFeed(int id) {
+        String sql = "Select f.photo_id, p.photo_url, u.username, p.caption from favorites f " +
+                "join photos p on f.photo_id = p.photo_id " +
+                "join users u on p.user_id = u.user_id " +
                 "WHERE f.user_id = ?;";
         List<PostDTO> userPosts = new ArrayList<>();
-        SqlRowSet result = template.queryForRowSet(sql, userId);
+        SqlRowSet result = template.queryForRowSet(sql, id);
 
         while (result.next()) {
             int photoId = result.getInt("photo_id");

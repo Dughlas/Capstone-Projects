@@ -1,7 +1,7 @@
 <template>
   <div>
     <span>
-      <button>
+      <button v-on:click="addToFavorites()">
         <i
           class="far fa-heart"
           data-fa-transform="shrink-3.5 down-1.6 right-1.25"
@@ -26,9 +26,9 @@ export default {
     };
   },
   methods: {
-      addToFavorites() {
-        ServerService.
-      }
+    addToFavorites() {
+      ServerService.addToFavorites(this.favorite).then(() => {});
+    },
   }
 };
 </script>

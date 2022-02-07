@@ -21,6 +21,8 @@ export default {
     listCommentsByPhoto(photoId) {
         return axios.get(`/viewComments/${photoId}`)
     },
+
+
     addLike(userLike) {
         return axios.post('/addLike', userLike)
     },
@@ -30,11 +32,16 @@ export default {
     likeCount(photoId) {
         return axios.get(`/countLike/${photoId}`)
     },
-    addToFavorites(favorite) {
-        return axios.post(`addToFavorites`, favorite)
-    },
     getLikedStatus(currentPost) {
         return axios.get('/isItLiked', currentPost)
+    },
+
+
+    addToFavorites(favorite) {
+        return axios.post(`/newFav`, favorite)
+    },
+    listFavorites(username) {
+        return axios.get('/myFavorites', username)
     }
 
 }

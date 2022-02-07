@@ -14,6 +14,7 @@
                  <like-button v-bind:pic-id="pic.photoId" />
                <add-comments v-bind:pic-id="pic.photoId" />
             <view-comments v-bind:pic-id="pic.photoId" />	 
+            <add-to-favorites v-bind:pic-id="pic.photoId" />
                    
             </div>
           </div>
@@ -28,6 +29,7 @@ import AddComments from "../components/AddComments.vue";
 import serverService from "../services/ServerService.js";
 import ViewComments from "../components/ViewComments.vue";
 import LikeButton from "../components/LikeButton.vue";
+import AddToFavorites from "../components/AddToFavorites.vue";
 
 export default {
   name: "postcard-2",
@@ -35,12 +37,15 @@ export default {
     AddComments,
     ViewComments,
     LikeButton,
+    AddToFavorites
   },
+
+ 
 
   data() {
     return {
       pictures: [],
-      allPictures: [],
+      allPictures: []
     };
   },
   created() {
@@ -52,6 +57,9 @@ export default {
       serverService.listAll().then((response) => {
         console.log(response.data);
         this.allPictures = response.data;
+      }),
+      serverService.listFavorites().then((response) => {
+        this.myFavoritePictures = response.data;
       })
     );
   },

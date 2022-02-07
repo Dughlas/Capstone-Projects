@@ -9,7 +9,7 @@ import java.util.List;
 public interface FavoriteDAO {
 
 
-    List<PostDTO> favoriteFeed(Principal principal);
+    List<PostDTO> favoriteFeed(int id);
 
     void addToFavs(FavoriteDTO favoriteDTO);
 }
