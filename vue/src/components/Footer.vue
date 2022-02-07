@@ -5,9 +5,9 @@
       <div class="container pt-4">
         <!-- Section: simple footer links -->
         <section class="mb-4">
-          <a href="#!" class="text-dark">{{message}}</a> &nbsp;&nbsp; |
-          <a href="#!" class="text-dark">{{message1}}</a> &nbsp;&nbsp; |
-          <a href="#!" class="text-dark">{{message2}}</a>
+          <a href="#!" class="text-dark">{{message}}</a> &nbsp;&nbsp; 
+          <!-- <a href="#!" class="text-dark">{{message1}}</a> &nbsp;&nbsp; |
+          <a href="#!" class="text-dark">{{message2}}</a> -->
         </section>
         <!-- Section: Simple footer links -->
       </div>
@@ -15,8 +15,7 @@
 
       <!-- Copyright Footer -->
       <div class="text-center p-3">
-        &copy; 2021 Copyright:
-        TE-gram.com
+        &copy; TE-gram.com
       </div>
       <!-- Copyright Footer-->
     </footer>
