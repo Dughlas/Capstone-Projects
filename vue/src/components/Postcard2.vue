@@ -4,18 +4,16 @@
       <div class="main-flex-container">
         <div class="flex-container">
           <div v-for="pic in allPictures" :key="pic.Id">
-            <p class="poster-name">{{ pic.username }}</p>
-
-            <p><img :src="pic.url" width="300" length="300" alt="" /></p>
-
-            <p class="caption">{{ pic.caption }}</p>
-            <div v-bind:src="pic"></div>
+              <p class="poster-name">{{ pic.username }}</p>
+              <p><img :src="pic.url" width="500px" length="500px" alt="" /></p>
+              <p class="caption">{{ pic.caption }}</p>
+              <div v-bind:src="pic"></div>
 
             <!-- call buttons here -->
             <div class="buttons">
-              <add-comments v-bind:pic-id="pic.photoId" />
-              <view-comments v-bind:pic-id="pic.photoId" />
-              <like-button v-bind:pic-id="pic.photoId" />
+                <add-comments v-bind:pic-id="pic.photoId" /> 
+                <view-comments v-bind:pic-id="pic.photoId" /> 
+               <like-button v-bind:pic-id="pic.photoId" />
             </div>
           </div>
         </div>
@@ -73,4 +71,5 @@ export default {
   padding: 20px;
   font-size: 30px;
 }
+
 </style>

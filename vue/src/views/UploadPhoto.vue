@@ -1,6 +1,9 @@
 <template>
   <div>
-      <button @click="openUploadModal">Upload files</button>
+   
+              <button @click="openUploadModal">Upload files</button> 
+     
+   
 </div>
 </template>
 
@@ -10,6 +13,8 @@
 export default {
   name: 'App',
   components: {
+  
+
     
   },
   data() {
@@ -45,5 +50,7 @@ export default {
 </script>
 
 <style>
+
+  
 
 </style>

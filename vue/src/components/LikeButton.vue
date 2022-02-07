@@ -3,7 +3,8 @@
     <span>
       <button
       v-on:click="addLike()"
-      v-on:dblclick="subtractLike()">
+      v-on:dblclick="subtractLike()"
+      title="Like Photo">
         <i
           class="far fa-thumbs-up"
           data-fa-transform="shrink-10 up-.5"

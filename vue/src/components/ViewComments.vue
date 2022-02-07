@@ -5,9 +5,9 @@
       <div>{{ comment.comment }}</div>
     </div>
 
-    <button id="comment-history-btn" v-on:click="showComments = true">
-      Show Comment History
-    </button>
+    <button id="comment-history-btn" title="View Comment History" v-on:click="showComments = true">
+           <i class="fa fa-history" aria-hidden="true"></i>
+   </button>
 
     <div id="show-all-comments" v-if="showComments === true">
       <div v-for="comment in allComments.slice(2)" :key="comment.id">
@@ -46,6 +46,7 @@ export default {
 
 <style>
 #comment-history-btn {
-  border: 2px solid black;
+   border: none;
 }
+
 </style>
