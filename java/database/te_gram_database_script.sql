@@ -56,6 +56,14 @@ constraint fk_comments_user_id foreign key(user_id) references users(user_id),
 constraint fk_comments_photo_id foreign key(photo_id) references photos(photo_id)
 );
 
+DROP TABLE IF EXISTS profile CASCADE;
+CREATE TABLE profile (
+user_id int,
+bio varchar,
+profile_pic_url varchar,
+constraint fk_profile_user_id foreign key(user_id) references users(user_id)
+);
+
 
 
 
