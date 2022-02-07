@@ -27,7 +27,13 @@
           <!-- Upload widget -->
            <!-- <a href="" class="navigation-link"> -->
              <!-- <i @click="openUploadModal" tag='i' class='fa fa-plus-square'></i> -->
-             <button @click="openUploadModal" tag='i' class='fa fa-plus-square'></button>
+             <!-- <i > -->
+               <div class="navigation-link">
+                  <button @click="openUploadModal" tag='i' class='fa fa-plus-square'></button>
+               </div>
+               
+             <!-- </i> -->
+            
           <!-- </a> -->
 
           <a class="navigation-link notifica">
@@ -101,5 +107,30 @@ export default {
 </script>
 
 <style>
+.navigation {
+  background-color: #ffffff;
+  height: 80px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.0975);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 10px 50px;
+  box-sizing: border-box;
+  z-index: 2;
+  /* animation magic */
+  transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+}
 
+.navigation-link button {
+  margin-left: 30px;
+  color: black;
+  text-decoration: none;
+  font-size: 22px;
+}
 </style>
