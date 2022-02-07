@@ -109,12 +109,13 @@ public class JdbcPostDao implements PostDao{
 
     @Override
     public void newLike(LikeDTO newLike) {
-        String sql = "INSERT INTO liked_photos (user_id, photo_id)" +
-                "VALUES (?,?)";
+        String sql = "INSERT INTO liked_photos (user_id, photo_id, is_liked)" +
+                "VALUES (?,?,?)";
         int userId = newLike.getUserId();
         int photoId = newLike.getPhotoId();
 
-        template.update(sql, userId, photoId);
+
+        template.update(sql, userId, photoId, true);
     }
 
     @Override
@@ -126,8 +127,8 @@ public class JdbcPostDao implements PostDao{
 
     @Override
     public void deleteLike(LikeDTO deleteLike) {
-        String sql = "DELETE FROM liked_photos (user_id, photo_id) " +
-                "VALUES (?,?)";
+        String sql = "Delete FROM liked_photos WHERE " +
+                "user_id = ? AND photo_id = ?;";
 
         int userId = deleteLike.getUserId();
         int photoId = deleteLike.getPhotoId();
@@ -135,5 +136,14 @@ public class JdbcPostDao implements PostDao{
         template.update(sql, userId, photoId);
     }
 
+    @Override
+    public boolean isItLiked(LikeDTO likeObject) {
+        String sql = "Select is_liked from liked_photos " +
+                "WHERE user_id = ? AND photo_id = ? ";
+        int userId = likeObject.getUserId();
+        int photoId = likeObject.getPhotoId();
 
+        boolean isLiked = template.queryForObject(sql,Boolean.class,userId,photoId);
+        return isLiked;
+    }
 }

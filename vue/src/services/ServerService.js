@@ -25,13 +25,16 @@ export default {
         return axios.post('/addLike', userLike)
     },
     subtractLike(userLike) {
-        return axios.post( '/addLike', userLike)
+        return axios.delete( '/removeLike', {data: userLike})
     },
     likeCount(photoId) {
         return axios.get(`/countLike/${photoId}`)
     },
     addToFavorites(favorite) {
         return axios.post(`addToFavorites`, favorite)
+    },
+    getLikedStatus() {
+        return axios.get('/isItLiked')
     }
 
 }

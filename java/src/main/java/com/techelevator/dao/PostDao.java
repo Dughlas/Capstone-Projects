@@ -21,6 +21,8 @@ public interface PostDao {
 
     void deleteLike(LikeDTO deleteLike);
 
+    boolean isItLiked(LikeDTO likeObject);
+
 
 
 

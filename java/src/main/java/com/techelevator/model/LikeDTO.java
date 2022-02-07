@@ -7,14 +7,17 @@ public class LikeDTO {
     private int photoId;
     private String username;
     private int numberOfLikes;
+    private boolean isLiked;
 
     public LikeDTO() {
     }
 
-    public LikeDTO(int likeId, int userId, int photoId, String username) {
+    public LikeDTO(int likeId, int userId, int photoId, String username, boolean isLiked) {
         this.likeId = likeId;
         this.userId = userId;
         this.photoId = photoId;
+        this.isLiked = isLiked;
+        this.username = username;
     }
 
     public LikeDTO(int numberOfLikes) {
