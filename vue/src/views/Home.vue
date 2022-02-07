@@ -6,8 +6,7 @@
         <div class="logo">
           <a class="no-underline" href="#">TE-gram</a>
         </div>
-        <router-link v-bind:to="{ name: 'uploadPhoto' }"
-          >Upload New Photo</router-link
+
         >
         <br />
         <!-- <router-link v-bind:to="{ name: 'myProfile' }">My Profile</router-link> -->
@@ -22,11 +21,17 @@
         </div>
         <div class="navigation-icons">
           <a href="" target="_blank" class="navigation-link">
-            <i class="fa fa-home"></i>
+            <router-link
+              v-bind:to="{ name: 'Home' }"
+              tag="i"
+              class="fa fa-home"
+            ></router-link>
+            
           </a>
-          <a href="" target="_blank" class="navigation-link">
-            <i class="fa fa-plus-square"></i>
-          </a>
+      <a href="" class="navigation-link">
+                  <router-link v-bind:to="{ name: 'uploadPhoto' }" tag='i' class='fa fa-plus-square'></router-link>
+                </a>
+
           <a class="navigation-link notifica">
             <i class="far fa-heart">
               <div class="notification-bubble-wrapper">
@@ -50,66 +55,19 @@
       <div></div>
     </div>
 
-
-
-<div>
-  <postcard-2/>
-</div>
-
-    <!-- Pictures below -->
-    <section>
-      <div class="main-flex-container">
-        <div class="flex-container">
-          <div v-for="pic in allPictures" :key="pic.id">
-            <p class="poster-name">{{ pic.username }}</p>
-
-            <p><img :src="pic.url" width="300" length="300" alt="" /></p>
-
-            <p class="caption">{{pic.caption}}</p>
-
-            <p>
-              <a class="navigation-link notifica">
-                <i class="far fa-heart">
-                  <div class="notification-bubble-wrapper">
-                    <div class="notification-bubble">
-                      <span class="notifications-count">99</span>
-                    </div>
-                  </div>
-                </i>
-              </a>
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
+    <div>
+      <!-- Pictures below -->
+      <postcard-2 />
+    </div>
   </div>
 </template>
 
 
 <script>
-import serverService from "../services/ServerService.js";
-import Postcard2 from "../components/Postcard2.vue"
+import Postcard2 from "../components/Postcard2.vue";
 export default {
   components: {
-    Postcard2
-  },
-  data() {
-    return {
-      pictures: [],
-      allPictures: []
-    };
-  },
-  created() {
-    serverService.listByUser(this.$store.state.user.username).then(
-      (response) => {
-        console.log(response.data);
-        this.pictures = response.data;
-      },
-      serverService.listAll().then((response) => {
-        console.log(response.data);
-        this.allPictures = response.data;
-      })
-    );
+    Postcard2,
   },
 };
 </script>
@@ -118,19 +76,6 @@ export default {
 @import url("//fonts.cdnfonts.com/css/billabong");
 body {
   background: #fafafa;
-}
-
-.main-flex-container {
-  display: flex;
-  justify-content: center;
-  background-color: rgb(245, 245, 240);
-}
-
-.flex-container > div {
-  background-color: #f1f1f1;
-  margin: 10px;
-  padding: 20px;
-  font-size: 30px;
 }
 
 /* start header */

@@ -17,6 +17,21 @@ export default {
     },
     listAll() {
         return axios.get('/homeFeed')
+    },
+    listCommentsByPhoto(photoId) {
+        return axios.get(`/viewComments/${photoId}`)
+    },
+    addLike(userLike) {
+        return axios.post('/addLike', userLike)
+    },
+    subtractLike(userLike) {
+        return axios.post( '/addLike', userLike)
+    },
+    likeCount(photoId) {
+        return axios.get(`/countLike/${photoId}`)
+    },
+    addToFavorites(favorite) {
+        return axios.post(`addToFavorites`, favorite)
     }
 
 }

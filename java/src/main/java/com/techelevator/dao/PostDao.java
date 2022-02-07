@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.LikeDTO;
 import com.techelevator.model.PostDTO;
 
 import java.util.List;
@@ -14,9 +15,11 @@ public interface PostDao {
 
     List<PostDTO> favoriteFeed();
 
-    void newLike(int userId, int photoId);
+    void newLike(LikeDTO newLike);
 
     int numberOfLikes(int photoId);
+
+    void deleteLike(LikeDTO deleteLike);
 
 
 

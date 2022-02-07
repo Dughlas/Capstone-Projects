@@ -1,7 +1,6 @@
 <template>
-
-<div>
- <section>
+  <div>
+    <section>
       <div class="main-flex-container">
         <div class="flex-container">
           <div v-for="pic in allPictures" :key="pic.Id">
@@ -9,43 +8,40 @@
 
             <p><img :src="pic.url" width="300" length="300" alt="" /></p>
 
-            <p class="caption">{{pic.caption}}</p>
-            <div v-bind:src="pic">
-              <comments v-bind:pic-id ='pic.photoId'/>
-              </div>
-            <p>
-              <a class="navigation-link notifica">
-                <i class="far fa-heart">
-                  <div class="notification-bubble-wrapper">
-                    <div class="notification-bubble">
-                      <span class="notifications-count">99</span>
-                    </div>
-                  </div>
-                </i>
-              </a>
-            </p>
+            <p class="caption">{{ pic.caption }}</p>
+            <div v-bind:src="pic"></div>
+
+            <!-- call buttons here -->
+            <div class="buttons">
+              <add-comments v-bind:pic-id="pic.photoId" />
+              <view-comments v-bind:pic-id="pic.photoId" />
+              <like-button v-bind:pic-id="pic.photoId" />
+            </div>
           </div>
         </div>
       </div>
     </section>
-</div>
-
-    
+  </div>
 </template>
 
 <script>
-import Comments from "../components/Comments.vue"
-import serverService from "../services/ServerService.js"
+import AddComments from "../components/AddComments.vue";
+import serverService from "../services/ServerService.js";
+import ViewComments from "../components/ViewComments.vue";
+import LikeButton from "../components/LikeButton.vue";
+
 export default {
-    name: "postcard-2",
-    components: {
-      Comments
-    },
-    
-     data() {
+  name: "postcard-2",
+  components: {
+    AddComments,
+    ViewComments,
+    LikeButton,
+  },
+
+  data() {
     return {
       pictures: [],
-      allPictures: []
+      allPictures: [],
     };
   },
   created() {
@@ -60,11 +56,10 @@ export default {
       })
     );
   },
-}
+};
 </script>
 
 <style>
-
 .main-flex-container {
   display: flex;
   justify-content: center;
@@ -73,10 +68,9 @@ export default {
   margin: 20px;
 }
 .flex-container > div {
-  background-color: #F1F1F1;
+  background-color: #f1f1f1;
   margin: 10px;
   padding: 20px;
   font-size: 30px;
 }
-
 </style>

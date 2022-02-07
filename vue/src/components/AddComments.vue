@@ -1,18 +1,23 @@
 <template>
   <div>
-    <a
+     <span
+      ><button
       id="show-form-button"
       href="#"
      v-on:click="showForm = true"
-    >Show Form{{picId}}</a>
+     v-on:dblclick="showForm = false"
+     >
+        <i
+          class="far fa-comment"
+          data-fa-transform="shrink-6"
+          data-fa-mask="fas fa-square"
+        ></i></button
+    ></span>
+
+   
     
-
-      
     <form v-on:submit.prevent="addComment" v-if="showForm === true" class = "comment-form" >
-
-     <div class="form-element"> <input id="comment" type="text" v-model="comment.comment" /></div>
-
-     
+     <div class="form-element"> <input id="comment" type="text" v-model="comment.comment"  placeholder="type your comment here..."/></div>
       <input type="submit" value="Add Comment" />
         
     </form>
@@ -20,9 +25,10 @@
 </template>
 
 <script>
-import ServerService from "../services/ServerService";
+import ServerService from "../services/ServerService.js";
+
 export default {
-  name: "comments",
+  name: "add-comments",
   props:['picId'],
   data() {
     return {
@@ -38,9 +44,14 @@ export default {
     addComment() {
       ServerService.addNewComment(this.comment).then(() => {
         console.log("Added Comment");
+        this.resetForm();
         //TODO: redirect to photo details view
       });
     },
+    resetForm() {
+      this.showForm = false;
+      this.comment = {};
+    }
   },
 };
 </script>
@@ -54,4 +65,15 @@ export default {
   height: 10px;
 }
 
+span {
+  padding: 0px 15px;
+}
+button {
+  padding: 0;
+  border: none;
+  background: none;
+}
+.form-element {
+  padding: 100px;
+}
 </style>

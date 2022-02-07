@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.LikeDTO;
 import com.techelevator.model.PostDTO;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -102,19 +103,36 @@ public class JdbcPostDao implements PostDao{
         return userPosts;
     }
 
+//    public void newFavorite() {
+//        String sql = "Insert INTO favorites "
+//    }
+
     @Override
-    public void newLike(int userId, int photoId) {
+    public void newLike(LikeDTO newLike) {
         String sql = "INSERT INTO liked_photos (user_id, photo_id)" +
                 "VALUES (?,?)";
+        int userId = newLike.getUserId();
+        int photoId = newLike.getPhotoId();
+
         template.update(sql, userId, photoId);
     }
 
     @Override
     public int numberOfLikes(int photoId) {
-        String sql = "SELECT COUNT(*) FROM liked_photos " +
-                "";
+        String sql = "SELECT COUNT(*) FROM liked_photos WHERE photo_id = ?";
+        int count = template.queryForObject(sql, Integer.class, photoId);
+        return count;
+    }
 
-        return 0;
+    @Override
+    public void deleteLike(LikeDTO deleteLike) {
+        String sql = "DELETE FROM liked_photos (user_id, photo_id) " +
+                "VALUES (?,?)";
+
+        int userId = deleteLike.getUserId();
+        int photoId = deleteLike.getPhotoId();
+
+        template.update(sql, userId, photoId);
     }
 
 
