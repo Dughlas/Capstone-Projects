@@ -5,67 +5,57 @@
     <div class="float-container">
 
         <div class="float-child">
-           <img alt="Vue logo" src="../images/te-gram.png">
+           <img alt="Vue logo" src="../assets/te-gram-bw-logo-small.png">
         </div>
   
         <div class="float-child">
-          <!-- Login form start here -->
-    <form class="form-signin" @submit.prevent="login">
-      <h1 class="h3 mb-3 font-weight-normal">TE-gram</h1>
-      <div
-        class="alert alert-danger"
-        role="alert"
-        v-if="invalidCredentials"
-      >Invalid username and password!</div>
-      <div
-        class="alert alert-success"
-        role="alert"
-        v-if="this.$route.query.registration"
-      >Thank you for registering, please sign in.</div>
-      <!-- <label for="username" class="sr-only">Username</label> -->
-      <input
-        type="text"
-        id="username"
-        class="form-control"
-        placeholder="Username"
-        v-model="user.username"
-        required
-        autofocus
-      />
-      <br />
-     
-      <!-- <label for="password" class="sr-only">Password</label> -->
-      <input
-        type="password"
-        id="password"
-        class="form-control"
-        placeholder="Password"
-        v-model="user.password"
-        required
-      />
-      <br />
-       <br />
-      <button type="submit">Log In</button>
-      <br />
-        <br />
-      <span>Don't have an account? </span>
-      <router-link :to="{ name: 'register' }">Sign up</router-link>
-      
-    </form>
-        </div>
-  
-  </div>
+            <!-- Login form start here -->
+            <form class="form-signin" @submit.prevent="login">
+                  <h1 class="h3 mb-3 font-weight-normal">TE-gram</h1>
+            <div class="alert alert-danger" role="alert" v-if="invalidCredentials">Invalid username and password!</div>
+            <div class="alert alert-success" role="alert" v-if="this.$route.query.registration"
+                >Thank you for registering, please sign in.</div>
+              <!-- <label for="username" class="sr-only">Username</label> -->
+            <input type="text" id="username" class="form-control" placeholder="Username"
+                v-model="user.username" required autofocus/>
+            <br />
+        
+          <!-- <label for="password" class="sr-only">Password</label> -->
+                  <input
+                    type="password"
+                    id="password"
+                    class="form-control"
+                    placeholder="Password"
+                    v-model="user.password"
+                    required
+                  />
+              <br />
+                <br />
+                  <button type="submit">Log In</button>
+                  <br />
+                    <br />
+                  <span>Don't have an account? </span>
+                  <router-link :to="{ name: 'register' }">Sign up</router-link>
+            </form>
+          </div>
+      </div>
 
- 
-  </div>
+       <footer-section></footer-section>
+       
+   </div>
+   
 </template>
 
 <script>
 import authService from "../services/AuthService";
+import FooterSection from "../components/Footer.vue";
 
 export default {
   name: "login",
-  components: {},
+  components: {
+    FooterSection,
+
+  },
   data() {
     return {
         user: {
