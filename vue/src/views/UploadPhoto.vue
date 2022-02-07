@@ -1,7 +1,7 @@
 <template>
   <div>
    
-              <button @click="openUploadModal">Upload files</button> 
+              <!-- <button @click="openUploadModal">Upload files</button>  -->
      
    
 </div>
@@ -22,6 +22,10 @@ export default {
       url: '',
     }
   },
+  created(){
+    this.openUploadModal(); 
+  },
+
   mounted() {
 
   },

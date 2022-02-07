@@ -11,9 +11,10 @@
 
             <!-- call buttons here -->
             <div class="buttons">
-                <add-comments v-bind:pic-id="pic.photoId" /> 
-                <view-comments v-bind:pic-id="pic.photoId" /> 
-               <like-button v-bind:pic-id="pic.photoId" />
+                 <like-button v-bind:pic-id="pic.photoId" />
+               <add-comments v-bind:pic-id="pic.photoId" />
+            <view-comments v-bind:pic-id="pic.photoId" />	 
+                   
             </div>
           </div>
         </div>
@@ -71,5 +72,10 @@ export default {
   padding: 20px;
   font-size: 30px;
 }
+
+.buttons{
+  display: flex;
+}
+
 
 </style>
