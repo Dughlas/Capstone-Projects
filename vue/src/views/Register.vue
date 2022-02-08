@@ -27,7 +27,7 @@
         required
       />
 
-       <br />
+      <br />
       <input
         type="password"
         id="confirmPassword"
@@ -36,50 +36,47 @@
         v-model="user.confirmPassword"
         required
       />
-       <br />
-       
-<!-- class="btn btn-lg btn-primary btn-block" -->
-           <button  type="submit">
-        Sign up
-      </button>
-     <br />
       <br />
-      <router-link :to="{ name: 'login' }">Have an account?</router-link> 
-    
+
+
+      <!-- class="btn btn-lg btn-primary btn-block" -->
+      <button type="submit">Sign up</button>
+      <br />
+      <br />
+      <router-link :to="{ name: 'login' }">Have an account?</router-link>
     </form>
   </div>
 </template>
 
 <script>
-import authService from '../services/AuthService';
-
+import authService from "../services/AuthService";
 export default {
-  name: 'register',
+  name: "register",
   data() {
     return {
       user: {
-        username: '',
-        password: '',
-        confirmPassword: '',
-        role: 'user',
+        username: "",
+        password: "",
+        confirmPassword: "",
+        role: "user",
       },
       registrationErrors: false,
-      registrationErrorMsg: 'There were problems registering this user.',
+      registrationErrorMsg: "There were problems registering this user.",
     };
   },
   methods: {
     register() {
       if (this.user.password != this.user.confirmPassword) {
         this.registrationErrors = true;
-        this.registrationErrorMsg = 'Password & Confirm Password do not match.';
+        this.registrationErrorMsg = "Password & Confirm Password do not match.";
       } else {
         authService
           .register(this.user)
           .then((response) => {
             if (response.status == 201) {
               this.$router.push({
-                path: '/login',
-                query: { registration: 'success' },
+                path: "/login",
+                query: { registration: "success" },
               });
             }
           })
@@ -87,30 +84,30 @@ export default {
             const response = error.response;
             this.registrationErrors = true;
             if (response.status === 400) {
-              this.registrationErrorMsg = 'Bad Request: Validation Errors';
+              this.registrationErrorMsg = "Bad Request: Validation Errors";
             }
           });
       }
     },
     clearErrors() {
       this.registrationErrors = false;
-      this.registrationErrorMsg = 'There were problems registering this user.';
-    },
+      this.registrationErrorMsg = "There were problems registering this user.";
+    }
   },
 };
 </script>
 
 <style scoped>
-@import url('//fonts.cdnfonts.com/css/billabong');
+@import url("//fonts.cdnfonts.com/css/billabong");
 
-h1{
-   font-family: "billabong", sans-serif;
-   font-weight: bold;
+h1 {
+  font-family: "billabong", sans-serif;
+  font-weight: bold;
 }
 #register {
   /* background-image: url("../assets/background.jpg");
   background-size: cover; */
-  background-color: #FFFAFA;
+  background-color: #fffafa;
   position: absolute;
   top: 95px;
   right: 0px;
@@ -118,9 +115,9 @@ h1{
   left: 0px;
 }
 
-h1{
-   font-family: "billabong", sans-serif;
-   font-weight: bold;
+h1 {
+  font-family: "billabong", sans-serif;
+  font-weight: bold;
 }
 .form-register {
   text-align: center;
@@ -129,11 +126,9 @@ h1{
   width: 120px;
   height: 30px;
   border-radius: 4px;
-border-style: solid;
+  border-style: solid;
   border-width: thin;
   font-weight: bold;
-
-   
 }
 .form-register {
   text-align: center;
