@@ -113,8 +113,8 @@ public class ServerController {
         return postDao.isItLiked(newLikeDto);
     }
 
-    @RequestMapping(path="/myFavorites", method = RequestMethod.GET)
-    public List<PostDTO> favoritesOfUser(@RequestBody String username) {
+    @RequestMapping(path="/myFavorites/{username}", method = RequestMethod.GET)
+    public List<PostDTO> favoritesOfUser(@PathVariable("username") String username) {
         int id = userDao.findIdByUsername(username);
         return favoriteDao.favoriteFeed(id);
     }

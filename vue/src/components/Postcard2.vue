@@ -1,5 +1,6 @@
 <template>
   <div>
+    {{this.allPictures}}
     <section>
       <div class="main-flex-container">
         <div class="flex-container">

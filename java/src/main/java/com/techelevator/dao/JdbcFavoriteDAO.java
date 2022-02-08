@@ -34,11 +34,13 @@ public class JdbcFavoriteDAO  implements FavoriteDAO{
             int photoId = result.getInt("photo_id");
             String photoUrl = result.getString("photo_url");
             String photoCaption = result.getString("caption");
+            String username = result.getString("username");
 
             PostDTO postDTO = new PostDTO();
             postDTO.setPhotoId(photoId);
             postDTO.setUrl(photoUrl);
             postDTO.setCaption(photoCaption);
+            postDTO.setUsername(username);
             userPosts.add(postDTO);
         }
         return userPosts;

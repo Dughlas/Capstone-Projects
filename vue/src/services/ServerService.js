@@ -41,7 +41,7 @@ export default {
         return axios.post(`/newFav`, favorite)
     },
     listFavorites(username) {
-        return axios.get('/myFavorites', username)
+        return axios.get(`/myFavorites/${username}`)
     }
 
 }

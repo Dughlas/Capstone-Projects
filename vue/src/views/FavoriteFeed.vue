@@ -1,5 +1,8 @@
 <template>
   <div>
+    {{this.myFavoritePictures}}
+    {{this.favorite.username}}
+    {{this.favorite.photoId}}
     <section>
       <div class="main-flex-container">
         <div class="flex-container">
@@ -25,7 +28,7 @@
 
 <script>
 import AddComments from "../components/AddComments.vue";
-import serverService from "../services/ServerService.js";
+import ServerService from "../services/ServerService.js";
 import ViewComments from "../components/ViewComments.vue";
 import LikeButton from "../components/LikeButton.vue";
 import AddToFavorites from "../components/AddToFavorites.vue";
@@ -41,18 +44,18 @@ export default {
 
   data() {
     return {
-      favorite: {
-        username: this.$store.state.user.username,
-        photoId: this.picId,
-      },
       myFavoritePictures: [],
+      favorite: {
+        username: this.$store.state.user.username
+      },
+      
     };
   },
   created() {
-    serverService.listFavorites(this.favorite.username).then((response) => {
+    ServerService.listFavorites(this.$store.state.user.username).then((response) => {
       this.myFavoritePictures = response.data;
     });
-  },
+  }
 };
 </script>
 

@@ -15,7 +15,7 @@
 <script>
 import ServerService from "../services/ServerService.js";
 export default {
-  name: "favorties",
+  name: "favorites",
   props: ["picId"],
   data() {
     return {
