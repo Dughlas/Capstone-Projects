@@ -12,4 +12,6 @@ public interface FavoriteDAO {
     List<PostDTO> favoriteFeed(int id);
 
     void addToFavs(FavoriteDTO favoriteDTO);
+
+    void removeFromFavs(FavoriteDTO favoriteDTO);
 }
