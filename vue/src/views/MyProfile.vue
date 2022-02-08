@@ -1,36 +1,49 @@
 <template>
   <div>
     <top-menu />
+
     
-<div class="main-container">
 
-    <form action="" v-if="$store.state.user.userId === profile.userId || profile.userId === 0">
-      <input type="text" name="bio" placeholder="Add your bio here!" />
-      <div class="navigation-link">
-        <button
-          @click="openUploadModal"
-          tag="i"
-          class="fa fa-plus-square"
-        ></button>
+    <div class="main-container">
+
+      {{newProfile}}
+
+
+      <form
+        v-on:submit.prevent="submitProfile"
+        v-if="
+          this.$store.state.user.username === profile.username || this.profile.username == null
+        "
+      >
+        <input type="text" v-model="newProfile.bio" placeholder="Add your bio here!" />
+
+        <div class="navigation-link">
+          <button
+            @click="openUploadModal"
+            tag="i"
+            class="fa fa-plus-square"
+          ></button>
+        </div>
+
+        <input type="submit" value="Save Profile" />
+      </form>
+
+      <!-- Profile pic -->
+      <div></div>
+      <div>
+        <img src="" alt="profile picutre" />
       </div>
-    </form>
 
-    <!-- Profile pic -->
-    <div></div>
-    <div>
-      <img src="" alt="profile picutre" />
-    </div>
+      <!-- Bio -->
+      <div>{{ this.profile.bio }}</div>
 
-    <!-- Bio -->
-    <div>{{ this.profile.bio }}</div>
-
-    <!-- Uploaded photos by user -->
-    <div class="flex-container">
-      <div v-for="pic in userPictures" :key="pic.Id">
-        <p><img :src="pic.url" width="500px" length="500px" alt="" /></p>
-        <div v-bind:src="pic"></div>
+      <!-- Uploaded photos by user -->
+      <div class="flex-container">
+        <div v-for="pic in userPictures" :key="pic.Id">
+          <p><img :src="pic.url" width="500px" length="500px" alt="" /></p>
+          <div v-bind:src="pic"></div>
+        </div>
       </div>
-    </div>
     </div>
   </div>
 </template>
@@ -45,38 +58,42 @@ export default {
 
   methods: {
     openUploadModal() {
-      window.cloudinary.openUploadWidget(
-        { cloud_name: 'te-gram2022',
-          upload_preset: 'o1kxq5jo'
-        },
-        (error, result) => {
-          if (!error && result && result.event === "success") {
-            console.log('Done uploading..: ', result);
-            this.$store.state.upload = result.info;
-            console.table(this.$store.state.upload);  
-            const url = this.$store.state.upload.secure_url;
-            console.log(url);
-            this.$router.push({ name: 'captionPhoto', query: 
-            { redirect: '/captionPhoto' }})
+      window.cloudinary
+        .openUploadWidget(
+          { cloud_name: "te-gram2022", upload_preset: "o1kxq5jo" },
+          (error, result) => {
+            if (!error && result && result.event === "success") {
+              console.log("Done uploading..: ", result);
+              this.$store.state.upload = result.info;
+              console.table(this.$store.state.upload);
+              const url = this.$store.state.upload.secure_url;
+              console.log(url);
             }
-        }).open();
-
-        
-     },
-     submitProfile() {
-       serverService.addNewProfile(this.profile).then(()=> {});
-     }
-},
+          }
+        )
+        .open();
+    },
+    submitProfile() {
+      console.log("what im sending")
+      console.log(this.profile);
+      serverService.addNewProfile(this.newProfile).then(() => {});
+    },
+  },
 
   data() {
     return {
-      profile: {},
+      newProfile : {
+        username :  this.$store.state.user.username
+      },
+      profile: {
+
+      },
       userPictures: [],
     };
   },
   created() {
-    console.log( 'STORE USER: ' + this.$store.state.user.username);
-    
+    console.log("STORE USER: " + this.$store.state.user.username);
+
     serverService
       .listByUser(this.$store.state.user.username)
       .then((response) => {
@@ -89,7 +106,6 @@ export default {
         this.profile = response.data;
         console.log(this.profile.username);
       });
-      
   },
 };
 </script>

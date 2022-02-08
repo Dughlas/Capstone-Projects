@@ -8,7 +8,9 @@
         </div>
 
         <br />
-        <router-link v-bind:to="{ name: 'myProfile' }">My Profile</router-link>
+        
+
+
         <div class="navigation-search-container">
           <i class="fa fa-search"></i>
           <input class="search-field" type="text" placeholder="Search" />
@@ -18,19 +20,19 @@
             </div>
           </div>
         </div>
+
+        <!-- home button -->
         <div class="navigation-icons">
           <a href="" target="_blank" class="navigation-link">
             <router-link
-              v-bind:to="{ name: 'Home' }"
+              v-bind:to="{ name: 'home' }"
               tag="i"
               class="fa fa-home"
             ></router-link>
           </a>
 
-          <!-- Upload widget -->
-          <!-- <a href="" class="navigation-link"> -->
-          <!-- <i @click="openUploadModal" tag='i' class='fa fa-plus-square'></i> -->
-          <!-- <i > -->
+          
+          <!-- add photo button -->
           <div class="navigation-link">
             <button
               @click="openUploadModal"
@@ -39,9 +41,7 @@
             ></button>
           </div>
 
-          <!-- </i> -->
-
-          <!-- </a> -->
+         
 
           <!-- view my favorites button -->
           <router-link 
@@ -58,20 +58,31 @@
           </router-link>
          
 
-          <!-- Profile widget -->
-          <a href="" class="navigation-link">
-            <i class="far fa-user-circle"></i>
-          </a>
+          <!-- my profile button -->
+                    <router-link 
+          v-bind:to="{ name: 'myProfile' }">
+            <a class="navigation-link notifica">
+              <i class="far fa-user-circle">
+                <div class="notification-bubble-wrapper">
+                  <div class="notification-bubble">
+                    <span class="notifications-count">99</span>
+                  </div>
+                </div>
+              </i>
+            </a>
+          </router-link>
+
 
           <!--Logout widget  -->
           <a href="" id="signout" class="navigation-link">
-            <!-- <i class="fas fa-sign-out-alt"></i>  -->
             <router-link
               v-bind:to="{ name: 'logout' }"
               tag="i"
               class="fas fa-sign-out-alt"
             ></router-link>
           </a>
+
+
         </div>
       </div>
     </nav>

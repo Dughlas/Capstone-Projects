@@ -47,8 +47,8 @@ export default {
     getProfile(username) {
         return axios.get( `/profile/${username}`)
     },
-    addNewProfile(newProfInfo) {
-        return axios.post( '/addProfInfo', newProfInfo)
+    addNewProfile(profile) {
+        return axios.post( '/addProfInfo', profile)
     }
 
 }

@@ -38,6 +38,16 @@ public class ProfileDTO {
         this.userId = userId;
     }
 
+    @Override
+    public String toString() {
+        return "ProfileDTO{" +
+                "userId=" + userId +
+                ", bio='" + bio + '\'' +
+                ", profilePicUrl='" + profilePicUrl + '\'' +
+                ", username='" + username + '\'' +
+                '}';
+    }
+
     public void setBio(String bio) {
         this.bio = bio;
     }
