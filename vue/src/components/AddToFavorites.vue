@@ -1,7 +1,7 @@
 <template>
   <div>
     <span>
-      <button v-on:click="addToFavorites()">
+      <button v-on:click="flipStatus()">
         <i
           class="far fa-heart"
           data-fa-transform="shrink-3.5 down-1.6 right-1.25"
@@ -22,6 +22,7 @@ export default {
       favorite: {
         username: this.$store.state.user.username,
         photoId: this.picId,
+        fa
       },
     };
   },
@@ -29,6 +30,7 @@ export default {
     addToFavorites() {
       ServerService.addToFavorites(this.favorite).then(() => {});
     },
+    flipStatus(){}
   }
 };
 </script>

@@ -57,6 +57,7 @@ export default {
         console.log("Added Comment");
         this.resetForm();
         //TODO: redirect to photo details view
+        location.reload();
       });
     },
     resetForm() {

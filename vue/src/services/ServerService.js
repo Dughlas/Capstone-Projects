@@ -49,6 +49,9 @@ export default {
     },
     addNewProfile(profile) {
         return axios.post( '/addProfInfo', profile)
+    },
+    removeFavorite(favorite) {
+        return axios.delete('/removeFavorite', favorite)
     }
 
 }

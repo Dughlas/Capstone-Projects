@@ -153,6 +153,26 @@ public class ServerController {
         return profileDAO.viewUserProfile(userId);
     }
 
+    @RequestMapping(path="/removeFavorite", method = RequestMethod.DELETE)
+    public void deleteFavorite(@RequestBody FavoriteDTO lostFav) {
+        int userId = userDao.findIdByUsername(lostFav.getUsername());
 
+        FavoriteDTO removedFavorite = new FavoriteDTO();
+        removedFavorite.setUserId(userId);
+        removedFavorite.setPhotoId(lostFav.getPhotoId());
+
+        favoriteDao.removeFromFavs(removedFavorite);
+    }
+
+    @RequestMapping(path="/isItFaved", method = RequestMethod.GET)
+    public boolean faved(@RequestBody FavoriteDTO favoriteDTO) {
+        int userId = userDao.findIdByUsername(favoriteDTO.getUsername());
+
+        FavoriteDTO favoriteObject = new FavoriteDTO();
+        favoriteObject.setUserId(userId);
+        favoriteObject.setPhotoId(favoriteDTO.getPhotoId());
+
+        return favoriteDao.isItFaved(favoriteObject);
+    }
 
 }

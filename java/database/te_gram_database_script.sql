@@ -22,8 +22,9 @@ CREATE TABLE favorites (
 favorited_id serial,
 user_id int,
 photo_id int,
+is_favorited boolean,
 
-constraint pk_favorites primary key(favorited_id),
+constraint pk_favorites_id primary key(favorited_id),
 constraint fk_favorites foreign key(photo_id) references photos(photo_id),
 constraint fk_favorites_user_id foreign key(user_id) references users(user_id)
 );

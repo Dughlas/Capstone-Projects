@@ -14,4 +14,6 @@ public interface FavoriteDAO {
     void addToFavs(FavoriteDTO favoriteDTO);
 
     void removeFromFavs(FavoriteDTO favoriteDTO);
+
+    public boolean isItFaved(FavoriteDTO favoriteDTO);
 }

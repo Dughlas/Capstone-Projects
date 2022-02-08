@@ -49,11 +49,41 @@ public class JdbcFavoriteDAO  implements FavoriteDAO{
     @Override
     public void addToFavs(FavoriteDTO fav) {
         try {
-            String sql = "Insert INTO favorites (user_id, photo_id) " +
-                    "VALUES(?,?)";
-            int id = template.queryForObject(sql, Integer.class, fav.getUserId(), fav.getPhotoId());
+            String sql = "Insert INTO favorites (user_id, photo_id, is_favorited) " +
+                    "VALUES(?,?,?)";
+            int id = template.queryForObject(sql, Integer.class, fav.getUserId(), fav.getPhotoId(), true);
         }catch(Exception e) {
             System.out.println("Some text that i put in here");
         }
+    }
+
+    @Override
+    public void removeFromFavs(FavoriteDTO deleteFav) {
+        String sql = "DELETE FROM favorites " +
+                "WHERE user_id = ? AND photo_id = ?";
+
+        int userId = deleteFav.getUserId();
+        int photoId = deleteFav.getPhotoId();
+
+        template.update(sql, userId, photoId);
+    }
+
+    @Override
+    public boolean isItFaved(FavoriteDTO favoriteDTO) {
+        String sql = "Select is_favorited from favorites " +
+                "WHERE user_id = ? AND photo_id = ? ";
+        int userId = favoriteDTO.getUserId();
+        int photoId = favoriteDTO.getPhotoId();
+
+        boolean isFaved = false;
+        try {
+            if (template.queryForObject(sql, Boolean.class, userId, photoId) == true) {
+                isFaved = true;
+                return isFaved;
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return isFaved;
     }
 }
