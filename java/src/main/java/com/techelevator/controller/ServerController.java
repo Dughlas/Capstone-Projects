@@ -132,6 +132,10 @@ public class ServerController {
 
     @RequestMapping(path="/addProfInfo", method= RequestMethod.POST)
     public void addProfileInfo(@RequestBody ProfileDTO newProfInfo) {
+
+        System.out.println("What I'm getting from client:");
+        System.out.println(newProfInfo);
+
         int userId = userDao.findIdByUsername(newProfInfo.getUsername());
 
         ProfileDTO newInfo = new ProfileDTO();
