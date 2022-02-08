@@ -42,6 +42,13 @@ export default {
     },
     listFavorites(username) {
         return axios.get(`/myFavorites/${username}`)
+    },
+
+    getProfile(username) {
+        return axios.get( `/profile/${username}`)
+    },
+    addNewProfile(newProfInfo) {
+        return axios.post( '/addProfInfo', newProfInfo)
     }
 
 }

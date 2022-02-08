@@ -145,7 +145,7 @@ public class ServerController {
     @RequestMapping(path="/profile/{username}", method= RequestMethod.GET)
     public ProfileDTO viewUserProfile(@PathVariable String username) {
         int userId = userDao.findIdByUsername(username);
-
+        
         return profileDAO.viewUserProfile(userId);
     }
 
