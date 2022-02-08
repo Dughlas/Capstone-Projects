@@ -8,7 +8,7 @@
         </div>
 
         <br />
-        <!-- <router-link v-bind:to="{ name: 'myProfile' }">My Profile</router-link> -->
+        <router-link v-bind:to="{ name: 'myProfile' }">My Profile</router-link>
         <div class="navigation-search-container">
           <i class="fa fa-search"></i>
           <input class="search-field" type="text" placeholder="Search" />
