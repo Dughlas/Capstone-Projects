@@ -1,8 +1,5 @@
 <template>
   <div>
-    {{this.myFavoritePictures}}
-    {{this.favorite.username}}
-    {{this.favorite.photoId}}
     <section>
       <div class="main-flex-container">
         <div class="flex-container">
