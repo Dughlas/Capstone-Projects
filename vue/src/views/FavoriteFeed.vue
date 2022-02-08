@@ -1,5 +1,6 @@
 <template>
   <div>
+    <top-menu />
     {{this.myFavoritePictures}}
     {{this.favorite.username}}
     {{this.favorite.photoId}}
@@ -32,6 +33,7 @@ import ServerService from "../services/ServerService.js";
 import ViewComments from "../components/ViewComments.vue";
 import LikeButton from "../components/LikeButton.vue";
 import AddToFavorites from "../components/AddToFavorites.vue";
+import TopMenu from "../components/TopMenu.vue";
 
 export default {
   name: "favoriteFeed",
@@ -40,6 +42,7 @@ export default {
     ViewComments,
     LikeButton,
     AddToFavorites,
+    TopMenu
   },
 
   data() {
