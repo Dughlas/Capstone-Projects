@@ -1,9 +1,12 @@
 <template>
   <div>
+<<<<<<< HEAD
     <top-menu />
     {{this.myFavoritePictures}}
     {{this.favorite.username}}
     {{this.favorite.photoId}}
+=======
+>>>>>>> main
     <section>
       <div class="main-flex-container">
         <div class="flex-container">
