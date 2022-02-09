@@ -4,7 +4,13 @@
       <div class="main-flex-container">
         <div class="flex-container">
           <div v-for="pic in allPictures" :key="pic.Id">
-            <div v-bind:pic-username="pic.username"><router-link v-bind:to="{name: 'userProfile'}" class="poster-name">{{ pic.username }}</router-link></div>
+
+            <user-posts v-bind:selectedUser="pic.username"/>
+
+            <div v-bind:selectedUser="pic.username">
+              <button v-on:click="redirect()" >{{pic.username}}</button>
+              </div>
+
             <p><img :src="pic.url" width="500px" length="500px" alt="" /></p>
             <p class="caption">{{ pic.caption }}</p>
             <div v-bind:src="pic"></div>
@@ -27,6 +33,7 @@
 
 
           </div>
+
         </div>
       </div>
     </section>
@@ -39,6 +46,7 @@ import serverService from "../services/ServerService.js";
 import ViewComments from "../components/ViewComments.vue";
 import LikeButton from "../components/LikeButton.vue";
 import AddToFavorites from "../components/AddToFavorites.vue";
+import UserPosts from "../components/UserPosts.vue";
 
 export default {
   name: "postcard-2",
@@ -47,29 +55,31 @@ export default {
     ViewComments,
     LikeButton,
     AddToFavorites,
+    UserPosts
+  },
+
+  methods: {
+    redirect() {
+this.$router.push({ name: 'userPage', query: 
+            { redirect: '/userPage' }})
+    }
   },
 
   data() {
     return {
-      pictures: [],
       allPictures: [],
+      selectedUser: "",
     };
   },
   created() {
-    serverService.listByUser(this.$store.state.user.username).then(
-      (response) => {
-        console.log(response.data);
-        this.pictures = response.data;
-      },
-      serverService.listAll().then((response) => {
-        console.log(response.data);
-        this.allPictures = response.data;
-      }),
+    serverService.listAll().then((response) => {
+      console.log(response.data);
+      this.allPictures = response.data;
+    }),
       serverService.listFavorites().then((response) => {
         this.myFavoritePictures = response.data;
-      })
-    );
-  },
+      });
+  }
 };
 </script>
 

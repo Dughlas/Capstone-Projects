@@ -1,28 +1,36 @@
 <template>
-  <div>
-      <input type="text"  v-model='user.id' />
-        {{this.user}}
-      
+<div>
+    <user-page v-bind:to="userPictures" />
+</div>
 
-  </div>
 </template>
 
 <script>
-import ServerService from '../services/ServerService.js';
+import serverService from "../services/ServerService.js";
+
 export default {
-    created(){
-        const userId = this.$route.params.userId;
-        ServerService.getUserPics(userId).then(
-            (response) => {
-                this.user = response.data;
-            }
-        )
-    },
+    name: 'userPosts',
+    props: ["selectedUser"],
 
+      data() {
+    return {
+      userPictures: []
+    }
+  },
 
+    created() {
+serverService.listByUser(this.selectedUser).then((response) => {
+        console.log(response.data);
+        this.pictures = response.data;
+      });
+    }
 }
+
 </script>
 
 <style>
+.box{
+    padding: 150px;
+}
 
 </style>
