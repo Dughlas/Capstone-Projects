@@ -59,8 +59,7 @@
          
 
           <!-- my profile button -->
-                    <router-link 
-          v-bind:to="{ name: 'myProfile' }">
+                    <router-link :to="{name: 'userPage', params: {username: this.$store.state.user.username }}">
             <a class="navigation-link notifica">
               <i class="far fa-user-circle">
                 <div class="notification-bubble-wrapper">
