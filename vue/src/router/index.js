@@ -97,7 +97,7 @@ const router = new Router({
       component: UserPosts
     },
     {
-      path: "/userPage",
+      path: "/profile/:username",
       name: "userPage",
       component: UserPage
     }

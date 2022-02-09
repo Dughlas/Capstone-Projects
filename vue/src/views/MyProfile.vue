@@ -28,14 +28,17 @@
         <input type="submit" value="Save Profile" />
       </form>
 
+
       <!-- Profile pic -->
       <div></div>
       <div>
-        <img src="" alt="profile picutre" />
+        <img src='profileUrl' alt="profile picutre" />
       </div>
+
 
       <!-- Bio -->
       <div>{{ this.profile.bio }}</div>
+
 
       <!-- Uploaded photos by user -->
       <div class="flex-container">
@@ -56,6 +59,7 @@ export default {
   name: "my-profile",
   components: { TopMenu },
 
+
   methods: {
     openUploadModal() {
       window.cloudinary
@@ -65,8 +69,8 @@ export default {
             if (!error && result && result.event === "success") {
               this.$store.state.upload = result.info;
               console.table(this.$store.state.upload);
-               //const profileUrl = this.$store.state.upload.secure_url;
-             
+               const profileUrl = this.$store.state.upload.secure_url;
+               console.log(profileUrl)
             }
           }
         )
@@ -82,13 +86,12 @@ export default {
   data() {
 
     return {
-      //profileUrl : '',
+     
       newProfile : {
         username :  this.$store.state.user.username,
-        
+         profileUrl : ''
       },
       profile: {
-
       },
       userPictures: [],
     };

@@ -5,11 +5,10 @@
         <div class="flex-container">
           <div v-for="pic in allPictures" :key="pic.Id">
 
-            <user-posts v-bind:selectedUser="pic.username"/>
 
-            <div v-bind:selectedUser="pic.username">
-              <button v-on:click="redirect()" >{{pic.username}}</button>
-              </div>
+            
+              <router-link :to="{name: 'userPage', params: {username: pic.username}}" >{{pic.username}}</router-link>
+             
 
             <p><img :src="pic.url" width="500px" length="500px" alt="" /></p>
             <p class="caption">{{ pic.caption }}</p>
@@ -46,7 +45,6 @@ import serverService from "../services/ServerService.js";
 import ViewComments from "../components/ViewComments.vue";
 import LikeButton from "../components/LikeButton.vue";
 import AddToFavorites from "../components/AddToFavorites.vue";
-import UserPosts from "../components/UserPosts.vue";
 
 export default {
   name: "postcard-2",
@@ -54,15 +52,24 @@ export default {
     AddComments,
     ViewComments,
     LikeButton,
-    AddToFavorites,
-    UserPosts
+    AddToFavorites
   },
 
+  computed: {
+    getSelectedUser () {
+      return this.$store.state.selectedUser
+    }
+  },
+  
   methods: {
     redirect() {
 this.$router.push({ name: 'userPage', query: 
-            { redirect: '/userPage' }})
+            { redirect: '/profile/:username' }})
     }
+  },
+
+  changeSelectedUser(selectedUser) {
+    this.$store.commit("CHANGE_SELECTED_USER", selectedUser)
   },
 
   data() {
