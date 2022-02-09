@@ -6,7 +6,7 @@ import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
 import UploadPhoto from '../views/UploadPhoto.vue'
-import MyProfile from '../views/MyProfile.vue'
+
 import CaptionPhoto from '../views/CaptionPhoto.vue'
 import FavoriteFeed from '../views/FavoriteFeed.vue'
 import UserPosts from '../components/UserPosts.vue'
@@ -63,14 +63,6 @@ const router = new Router({
       path: "/uploadPhoto",
       name: "uploadPhoto",
       component: UploadPhoto,
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
-      path: "/myProfile",
-      name: "myProfile",
-      component: MyProfile,
       meta: {
         requiresAuth: true
       }

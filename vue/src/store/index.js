@@ -22,6 +22,7 @@ export default new Vuex.Store({
     user: currentUser || {},
     upload: {},
     comment: {},
+    profileUpload: {},
     selectedUser: ''
   },
   mutations: {

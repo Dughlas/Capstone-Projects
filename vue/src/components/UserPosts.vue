@@ -1,22 +1,33 @@
 <template>
 <div>
+  <top-menu />
 
- 
-  
+<div class="tiny-pic-dad">
+ <img :src="profile.profilePicUrl"  class= "tiny-pic"/>
+ </div>
+<div>{{profile.bio}}</div>
 
 
 <div class="flex-container">
 
 <form
-        v-on:submit.prevent="submitProfile"
+        v-on:submit.prevent="submitProfile()"
         v-if="this.$store.state.user.username === this.$route.params.username">
         <input type="text" v-model="newProfile.bio" placeholder="Add your bio here!" />
         <div class="navigation-link">
           <button
+           
             @click="openUploadModal"
             tag="i"
             class="fa fa-plus-square"
           ></button>
+         
+
+          
+         
+          
+
+
         </div>
         <input type="submit" value="Save Profile" />
       </form>
@@ -58,21 +69,37 @@ import AddComments from "../components/AddComments.vue";
 import ViewComments from "../components/ViewComments.vue";
 import LikeButton from "../components/LikeButton.vue";
 import AddToFavorites from "../components/AddToFavorites.vue";
+import TopMenu from "../components/TopMenu.vue";
+
 
 export default {
     name: 'userPosts',
     props: ["selectedUser"],
+    
     components: {
-AddComments,
+    AddComments,
     ViewComments,
     LikeButton,
     AddToFavorites,
+    TopMenu,
+
     },
 
       data() {
     return {
+      profileUrl: '',
       userPictures: [],
-      newProfile: {}
+
+      profile: {
+        username : this.$route.params.username,
+        
+        
+      },
+      newProfile: {
+        username: this.$store.state.user.username,
+        
+        
+      }
     }
   },
   methods: {
@@ -84,13 +111,18 @@ AddComments,
             if (!error && result && result.event === "success") {
               this.$store.state.upload = result.info;
               console.table(this.$store.state.upload);
-               const profileUrl = this.$store.state.upload.secure_url;
+                const profileUrl = this.$store.state.upload.secure_url;
                console.log(profileUrl)
             }
           }
         )
         .open();
+    },
+    submitProfile() {
+      this.newProfile.profilePicUrl = this.$store.state.upload.secure_url;
+      serverService.addNewProfile(this.newProfile)
     }
+
   },
 
     created() {
@@ -98,6 +130,10 @@ serverService.listByUser(this.$route.params.username).then((response) => {
         console.log(response.data);
         this.userPictures = response.data;
       });
+
+      serverService.getProfile(this.profile.username).then((response) => {
+        this.profile = response.data;
+      })
     }
 }
 
@@ -106,6 +142,22 @@ serverService.listByUser(this.$route.params.username).then((response) => {
 <style>
 .box{
     padding: 150px;
+}
+
+.flex-container {
+  padding: 150px;
+}
+
+.tiny-pic{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  
+}
+
+.tiny-pic-dad{
+  padding: 100px;
+  
 }
 
 </style>
