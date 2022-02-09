@@ -52,6 +52,9 @@ export default {
     },
     removeFavorite(favorite) {
         return axios.delete('/removeFavorite', favorite)
+    },
+    getFavStatus(favorite) {
+        return axios.get('/isItFaved' , favorite)
     }
 
 }

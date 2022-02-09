@@ -1,7 +1,8 @@
 <template>
   <div>
+    {{this.newFavorite.isFavorited}}
     <span>
-      <button v-on:click="flipStatus()">
+      <button v-on:click.prevent="flipStatus()">
         <i
           class="far fa-heart"
           data-fa-transform="shrink-3.5 down-1.6 right-1.25"
@@ -22,15 +23,33 @@ export default {
       favorite: {
         username: this.$store.state.user.username,
         photoId: this.picId,
-        fa
+        isFavorited: false
       },
+      newFavorite: {
+        username: this.$store.state.user.username,
+        photoId: this.picId,
+        isFavorited: false
+      }
     };
   },
+  created() {
+    ServerService.getFavStatus(this.favorite).then((response) =>{
+      this.newFavorite.isFavorited = response.data;
+    })
+  },
   methods: {
-    addToFavorites() {
-      ServerService.addToFavorites(this.favorite).then(() => {});
-    },
-    flipStatus(){}
+
+    flipStatus(){
+      if(!this.isFavorited) {
+        ServerService.addToFavorites(this.favorite).then( () =>
+        this.isFavorited = true
+        )
+      } else if (this.isFavorited) {
+        ServerService.removeFavorite(this.favorite).then( () =>
+        this.isFavorited = false
+        )
+      }
+    }
   }
 };
 </script>

@@ -9,6 +9,7 @@ import UploadPhoto from '../views/UploadPhoto.vue'
 import MyProfile from '../views/MyProfile.vue'
 import CaptionPhoto from '../views/CaptionPhoto.vue'
 import FavoriteFeed from '../views/FavoriteFeed.vue'
+import UserProfile from '../views/UserProfile.vue'
 
 Vue.use(Router)
 
@@ -22,6 +23,12 @@ Vue.use(Router)
  */
 
 const router = new Router({
+  data(){
+    return {
+      picUsername: picUsername,
+      props:['picUsername']
+    }
+  },
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
@@ -88,6 +95,11 @@ const router = new Router({
       meta: {
         requiresAuth: true
       }
+    },
+    {
+      path:"/userPage/" + picUsername,
+      name: "userProfile",
+      component: UserProfile,
     }
   ]
 })

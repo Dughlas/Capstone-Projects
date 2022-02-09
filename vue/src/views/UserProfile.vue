@@ -6,27 +6,7 @@
 
     <div class="main-container">
 
-      {{newProfile}}
-
-
-      <form
-        v-on:submit.prevent="submitProfile"
-        v-if="
-          this.$store.state.user.username === profile.username || this.profile.username == null
-        "
-      >
-        <input type="text" v-model="newProfile.bio" placeholder="Add your bio here!" />
-
-        <div class="navigation-link">
-          <button
-            @click="openUploadModal"
-            tag="i"
-            class="fa fa-plus-square"
-          ></button>
-        </div>
-
-        <input type="submit" value="Save Profile" />
-      </form>
+    
 
       <!-- Profile pic -->
       <div></div>
@@ -36,6 +16,7 @@
 
       <!-- Bio -->
       <div>{{ this.profile.bio }}</div>
+      {{picUsername}}
 
       <!-- Uploaded photos by user -->
       <div class="flex-container">
@@ -56,32 +37,11 @@ export default {
   name: "my-profile",
   components: { TopMenu },
 
-  methods: {
-    openUploadModal() {
-      window.cloudinary
-        .openUploadWidget(
-          { cloud_name: "te-gram2022", upload_preset: "o1kxq5jo" },
-          (error, result) => {
-            if (!error && result && result.event === "success") {
-              this.$store.state.upload = result.info;
-              console.table(this.$store.state.upload);
-               //const profileUrl = this.$store.state.upload.secure_url;
-             
-            }
-          }
-        )
-        .open();
-    },
-    submitProfile() {
-      console.log("what im sending")
-      console.log(this.profile);
-      serverService.addNewProfile(this.newProfile).then(() => {});
-    },
-  },
 
   data() {
 
     return {
+        props:['picUsername'],
       //profileUrl : '',
       newProfile : {
         username :  this.$store.state.user.username,
@@ -97,7 +57,7 @@ export default {
     console.log("STORE USER: " + this.$store.state.user.username);
 
     serverService
-      .listByUser(this.$store.state.user.username)
+      .listByUser()
       .then((response) => {
         this.userPictures = response.data;
       });

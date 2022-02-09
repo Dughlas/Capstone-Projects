@@ -75,15 +75,14 @@ public class JdbcFavoriteDAO  implements FavoriteDAO{
         int userId = favoriteDTO.getUserId();
         int photoId = favoriteDTO.getPhotoId();
 
-        boolean isFaved = false;
         try {
             if (template.queryForObject(sql, Boolean.class, userId, photoId) == true) {
-                isFaved = true;
-                return isFaved;
+                return true;
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            return false;
         }
-        return isFaved;
+        return false;
     }
 }

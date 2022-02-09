@@ -4,7 +4,7 @@
       <div class="main-flex-container">
         <div class="flex-container">
           <div v-for="pic in allPictures" :key="pic.Id">
-            <p class="poster-name">{{ pic.username }}</p>
+            <div v-bind:pic-username="pic.username"><router-link v-bind:to="{name: 'userProfile'}" class="poster-name">{{ pic.username }}</router-link></div>
             <p><img :src="pic.url" width="500px" length="500px" alt="" /></p>
             <p class="caption">{{ pic.caption }}</p>
             <div v-bind:src="pic"></div>
