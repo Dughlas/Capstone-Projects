@@ -1,37 +1,24 @@
 <template>
-  <div>
-    <span>
-      <button
-        id="show-form-button"
-        v-on:click="showForm = true"
-        v-on:dblclick="showForm = false"
-        title="Add Comments"
-      >
-        <i
-          class="far fa-comment"
-          data-fa-transform="shrink-6"
-          data-fa-mask="fas fa-square"
-        ></i>
-      </button>
-    </span>
-
-    <div class="add-comment-form">
-      <form
-        v-on:submit.prevent="addComment"
-        v-if="showForm === true"
-        class="comment-form"
-      >
-        <div class="form-element">
-          <input
-            id="comment"
-            type="text"
-            v-model="comment.comment"
-            placeholder="type your comment here..."
-          />
-        </div>
-        <input type="submit" value="Add Comment" />
-      </form>
-    </div>
+  <div >
+             <span>          
+                <button id="show-form-button" v-on:click="showForm = true" v-on:dblclick="showForm = false" title="Add Comments">
+                  <i class="far fa-comment" data-fa-transform="shrink-6" data-fa-mask="fas fa-square"> </i>
+                </button>
+             </span> 
+           
+           
+           
+                  <form v-on:submit.prevent="addComment" v-if="showForm === true" class="container">
+                        <span>
+                          <input id="comment" type="text" v-model="comment.comment" placeholder="type your comment here..."/>
+                        </span>
+                     
+                        <span id="post-button">
+                          <input type="submit" value="Post" />
+                        </span>
+                  </form>
+          
+  
   </div>
 </template>
 
@@ -69,26 +56,41 @@ export default {
 </script>
 
 <style>
-.comment-form {
-  margin: 200px;
-}
 
-.form-element {
+/* .comment-form {
+  margin: 200px;
+} */
+
+/* .form-element {
   height: 10px;
-}
+} */
 
 span {
-  padding: 0px 15px;
-}
+  padding: 0px 3px;
+} 
 button {
   padding: 0;
   border: none;
   background: none;
 }
-.form-element {
+/* .form-element {
   padding: 100px;
-}
-.add-comment-form {
+} */
+
+.container{
   display: flex;
+   flex-direction: row;
+} 
+
+input[type=text]{
+  font-size: medium;
 }
+
+input[type=submit] {
+  font-size: medium;
+  
+ 
+}
+
+
 </style>

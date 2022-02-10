@@ -5,7 +5,7 @@
     <div class="float-container">
 
         <div class="float-child">
-           <img alt="Vue logo" src="../assets/te-gram-bw-logo-small.png">
+           <img alt="Vue logo" src="../assets/tegram.png">
         </div>
   
         <div class="float-child">
@@ -55,6 +55,7 @@
         </div>
   
   </div>
+
 
 <footer-section></footer-section>
  

@@ -1,24 +1,13 @@
 <template>
   <div>
-      <footer class="text-center bg-light">
-      <!-- Grid container -->
-      <div class="container pt-4">
-        <!-- Section: simple footer links -->
-        <section class="mb-4">
-          <a href="#!" class="text-dark">{{message}}</a> &nbsp;&nbsp; 
-          <!-- <a href="#!" class="text-dark">{{message1}}</a> &nbsp;&nbsp; |
-          <a href="#!" class="text-dark">{{message2}}</a> -->
-        </section>
-        <!-- Section: Simple footer links -->
-      </div>
-      <!-- Grid container -->
-
-      <!-- Copyright Footer -->
-      <div class="text-center p-3">
-        &copy; TE-gram.com | Brought to you by The Multiverse Team
-      </div>
-      <!-- Copyright Footer-->
-    </footer>
+     
+            <div class="footer">
+                <p>
+                    <router-link :to="{ name: 'about' }">{{message}}</router-link> &nbsp;&nbsp; |
+                    <router-link :to="{ name: 'contact' }">{{message1}}</router-link>
+                </p>
+                <p>&copy; TE-gram.com | Brought to you by The Multiverse Team</p>
+            </div>
   </div>
 </template>
 
@@ -29,8 +18,8 @@ export default {
         data(){
             return {
                 message:'About',
-                message1:'Disclaimer',
-                message2:'Privacy Policy'
+                message1:'Contact Us',
+                
             }
         }
     
@@ -38,5 +27,15 @@ export default {
 </script>
 
 <style>
+  .footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: rgb(238, 232, 232);
+   color: rgb(49, 48, 48);
+   text-align: center;
+}
+
 
 </style>

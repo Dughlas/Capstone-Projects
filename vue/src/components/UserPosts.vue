@@ -21,13 +21,6 @@
             tag="i"
             class="fa fa-plus-square"
           ></button>
-         
-
-          
-         
-          
-
-
         </div>
         <input type="submit" value="Save Profile" />
       </form>

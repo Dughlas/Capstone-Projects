@@ -2,11 +2,13 @@
   <div>
     {{this.like.isLiked}}
     <span>
-      <button  
-      v-on:click.prevent="flipStatus()"
-      title="Like Photo">
+      <button
+        id="like-button"
+        v-on:click.prevent="flipStatus($event)"
+        title="Like Photo"
+      >
         <i
-          class="far fa-thumbs-up"
+          class="far fa-heart"
           data-fa-transform="shrink-10 up-.5"
           data-fa-mask="fas fa-comment"
         ></i></button
@@ -28,7 +30,7 @@ export default {
       like: {
         username: this.$store.state.user.username,
         photoId: this.picId,
-        isLiked: false
+        isLiked: false,
       },
     };
   },
@@ -44,17 +46,20 @@ export default {
   },
   methods: {
   
-    flipStatus() {
+    flipStatus(event) {
+      const icon = event.target;
         if(!this.like.isLiked) {
           ServerService.addLike(this.like).then(() => {
         this.likeCount +=1;
         this.like.isLiked = true
+        icon.classList.add("change-color");
       });
         
         } else if(this.like.isLiked) {
             ServerService.subtractLike(this.like).then(() => {});
             this.likeCount -=1;
             this.like.isLiked = false;
+            icon.classList.remove("change-color");
         }
       
     }
@@ -64,4 +69,7 @@ export default {
 </script>
 
 <style>
+.change-color {
+  color: #ffa69e;
+}
 </style>

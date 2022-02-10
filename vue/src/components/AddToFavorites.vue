@@ -1,10 +1,9 @@
 <template>
   <div>
-    
     <span>
       <button v-on:click.prevent="flipStatus()">
         <i
-          class="far fa-heart"
+          class="far fa-star"
           data-fa-transform="shrink-3.5 down-1.6 right-1.25"
           data-fa-mask="fas fa-circle"
         ></i>
