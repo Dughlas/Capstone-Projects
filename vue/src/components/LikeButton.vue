@@ -5,7 +5,6 @@
         id="like-button"
         v-on:click.prevent="flipStatus($event)"
         title="Like Photo"
-
       >
         <i
           class="far fa-heart"
@@ -14,7 +13,6 @@
         ></i></button
     ></span>
     <sub class="count">{{ this.likeCount }}</sub>
-    
     
     
   </div>
@@ -42,27 +40,25 @@ export default {
 
     ServerService.getLikedStatus(this.like).then((response) =>{
       this.like.isLiked = response.data;
-      if(this.like.isLiked) {
-        const icon = event.target;
-        icon.classList.add("change-color")
-      }
       })
    
   },
   methods: {
   
-    flipStatus() {
-      
+    flipStatus(event) {
+      const icon = event.target;
         if(!this.like.isLiked) {
           ServerService.addLike(this.like).then(() => {
         this.likeCount +=1;
         this.like.isLiked = true
+        icon.classList.add("change-color");
       });
         
         } else if(this.like.isLiked) {
             ServerService.subtractLike(this.like).then(() => {});
             this.likeCount -=1;
             this.like.isLiked = false;
+            icon.classList.remove("change-color");
         }
       
     }
