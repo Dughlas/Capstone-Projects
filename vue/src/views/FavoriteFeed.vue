@@ -80,4 +80,11 @@ export default {
 .buttons {
   display: flex;
 }
+
+.change-color {
+  color: #ffa69e;
+}
+.count {
+  font-size: small;
+}
 </style>

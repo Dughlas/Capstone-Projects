@@ -10,17 +10,6 @@
         <br />
         
 
-
-        <div class="navigation-search-container">
-          <i class="fa fa-search"></i>
-          <input class="search-field" type="text" placeholder="Search" />
-          <div class="search-container">
-            <div class="search-container-box">
-              <div class="search-results"></div>
-            </div>
-          </div>
-        </div>
-
         <!-- home button -->
         <div class="navigation-icons">
           <a href="" target="_blank" class="navigation-link">
