@@ -1,9 +1,13 @@
 <template>
   <div>
     <span>
-      <button v-on:click.prevent="flipStatus($event)" title="Like Photo">
+      <button
+        id="like-button"
+        v-on:click.prevent="flipStatus($event)"
+        title="Like Photo"
+      >
         <i
-          class="far fa-heart fa"
+          class="far fa-heart"
           data-fa-transform="shrink-10 up-.5"
           data-fa-mask="fas fa-comment"
         ></i></button
@@ -40,26 +44,21 @@ export default {
         ServerService.addLike(this.like).then(() => {
           this.likeCount += 1;
           this.isLiked = true;
-
-           icon.classList.add("fa"); 
-          // icon.classList.remove("fa-thumbs-up");
-          // icon.classList.add("fa-thumbs-down"); 
+          icon.classList.add("change-color");
         });
       } else if (this.isLiked) {
         ServerService.subtractLike(this.like).then(() => {});
         this.likeCount -= 1;
         this.isLiked = false;
-        // icon.classList.remove("fa-thumbs-down");
-        icon.classList.add("fa-thumbs-up");
-          icon.classList.remove("fa"); 
+        icon.classList.remove("change-color");
       }
     },
   },
 };
 </script>
 
-<style scoped>
-.fa {
-  color : #FFA69E; 
+<style>
+.change-color {
+  color: #ffa69e;
 }
 </style>
