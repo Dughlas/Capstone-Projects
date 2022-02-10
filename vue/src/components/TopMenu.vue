@@ -47,7 +47,7 @@
           <router-link 
           v-bind:to="{ name: 'favoriteFeed' }">
             <a class="navigation-link notifica">
-              <i class="far fa-heart">
+              <i class="far fa-star">
                 <div class="notification-bubble-wrapper">
                   <div class="notification-bubble">
                     <span class="notifications-count">99</span>
