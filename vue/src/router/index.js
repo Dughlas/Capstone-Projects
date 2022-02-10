@@ -6,6 +6,8 @@ import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
 import UploadPhoto from '../views/UploadPhoto.vue'
+import About from '../views/About.vue'
+import Contact from '../views/Contact.vue'
 
 import CaptionPhoto from '../views/CaptionPhoto.vue'
 import FavoriteFeed from '../views/FavoriteFeed.vue'
@@ -92,7 +94,17 @@ const router = new Router({
       path: "/profile/:username",
       name: "userPage",
       component: UserPage
-    }
+    },
+    {
+      path: "/About",
+      name: "about",
+      component: About
+    },
+    {
+      path: "/Contact",
+      name: "contact",
+      component: Contact
+    },
   ]
 })
 
