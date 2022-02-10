@@ -11,11 +11,10 @@
 
 
 export default {
-  name: 'App',
+  name: 'upload-photo',
   components: {
   
-
-    
+  
   },
   data() {
     return {

@@ -15,7 +15,7 @@
 
       <!-- Copyright Footer -->
       <div class="text-center p-3">
-        &copy; TE-gram.com
+        &copy; TE-gram.com | Brought to you by The Multiverse Team
       </div>
       <!-- Copyright Footer-->
     </footer>

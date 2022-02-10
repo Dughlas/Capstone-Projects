@@ -38,7 +38,8 @@ public class JdbcCommentDao implements CommentDao{
         String sql = "Select username, comment_id, comment " +
                 "FROM comments c " +
                 "JOIN users u ON c.user_id = u.user_id " +
-                "WHERE photo_id = ?";
+                "WHERE photo_id = ?" +
+                "ORDER BY comment_id DESC";
         List<CommentDTO>commentsOnPhoto = new ArrayList<>();
         SqlRowSet result = template.queryForRowSet(sql,photoId);
 

@@ -1,9 +1,8 @@
 <template>
   <div>
     <span>
-      <button
-      v-on:click="addLike()"
-      v-on:dblclick="subtractLike()"
+      <button  
+      v-on:click.prevent="flipStatus()"
       title="Like Photo">
         <i
           class="far fa-thumbs-up"
@@ -11,7 +10,7 @@
           data-fa-mask="fas fa-comment"
         ></i></button
     ></span>
-    {{this.likeCount}}
+    {{ this.likeCount }}
   </div>
 </template>
 
@@ -26,16 +25,35 @@ export default {
       like: {
         username: this.$store.state.user.username,
         photoId: this.picId,
-      }
+        isLiked: false
+      },
     };
   },
   created() {
-    ServerService.addLike(this.like).then(() => {}),
     ServerService.likeCount(this.like.photoId).then((respsonse) => {
       this.likeCount = respsonse.data;
-    }),
-    ServerService.subtractLike(this.like).then(() => {})
+      this.like.isLiked = ServerService.getLikedStatus(this.like)
+    }
+    );
   },
+  methods: {
+  
+    flipStatus() {
+        if(!this.isLiked) {
+          ServerService.addLike(this.like).then(() => {
+        this.likeCount +=1;
+        this.isLiked = true
+      });
+        
+        } else if(this.isLiked) {
+            ServerService.subtractLike(this.like).then(() => {});
+            this.likeCount -=1;
+            this.isLiked = false;
+        }
+      
+    }
+    
+  }
 };
 </script>
 

@@ -13,13 +13,13 @@ public interface PostDao {
 
     List<PostDTO> photoFeed();
 
-    List<PostDTO> favoriteFeed();
-
     void newLike(LikeDTO newLike);
 
     int numberOfLikes(int photoId);
 
     void deleteLike(LikeDTO deleteLike);
+
+    boolean isItLiked(LikeDTO likeObject);
 
 
 

@@ -5,7 +5,7 @@
       <div>{{ comment.comment }}</div>
     </div>
 
-    <button id="comment-history-btn" title="View Comment History" v-on:click="showComments = true">
+    <button id="comment-history-btn" title="View Comment History" v-on:click="flipStatus()" >
            <i class="fa fa-history" aria-hidden="true"></i>
    </button>
 
@@ -40,6 +40,14 @@ export default {
     });
   },
   methods: {
+
+    flipStatus() {
+      if (this.showComments === false) {
+        this.showComments = true;
+      } else if(this.showComments === true) {
+        this.showComments = false;
+      }
+    }
   }
 };
 </script>

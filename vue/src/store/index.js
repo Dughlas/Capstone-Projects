@@ -21,9 +21,14 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     upload: {},
-    comment: {}
+    comment: {},
+    profileUpload: {},
+    selectedUser: ''
   },
   mutations: {
+    CHANGE_SELECTED_USER(state, payload) {
+      state.selectedUser = payload
+    },
     SET_AUTH_TOKEN(state, token) {
       state.token = token;
       localStorage.setItem('token', token);

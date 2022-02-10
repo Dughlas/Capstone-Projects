@@ -6,8 +6,11 @@ import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
 import UploadPhoto from '../views/UploadPhoto.vue'
-import MyProfile from '../views/MyProfile.vue'
+
 import CaptionPhoto from '../views/CaptionPhoto.vue'
+import FavoriteFeed from '../views/FavoriteFeed.vue'
+import UserPosts from '../components/UserPosts.vue'
+import UserPage from '../views/UserPage.vue'
 
 Vue.use(Router)
 
@@ -65,20 +68,30 @@ const router = new Router({
       }
     },
     {
-      path: "/myProfile",
-      name: "myProfile",
-      component: MyProfile,
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
       path: "/captionPhoto",
       name: "captionPhoto",
       component: CaptionPhoto,
       meta: {
         requiresAuth: true
       }
+    },
+    {
+      path: "/myFavorites",
+      name: "favoriteFeed",
+      component: FavoriteFeed,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/userPosts",
+      name: "userPosts",
+      component: UserPosts
+    },
+    {
+      path: "/profile/:username",
+      name: "userPage",
+      component: UserPage
     }
   ]
 })

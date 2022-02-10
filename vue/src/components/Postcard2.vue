@@ -4,19 +4,36 @@
       <div class="main-flex-container">
         <div class="flex-container">
           <div v-for="pic in allPictures" :key="pic.Id">
-              <p class="poster-name">{{ pic.username }}</p>
-              <p><img :src="pic.url" width="500px" length="500px" alt="" /></p>
-              <p class="caption">{{ pic.caption }}</p>
-              <div v-bind:src="pic"></div>
+            
+
+              
+            
+              <router-link :to="{name: 'userPage', params: {username: pic.username}}" >{{pic.username}}</router-link>
+               
+
+            <p><img :src="pic.url" width="500px" length="500px" alt="" /></p>
+            <p class="caption">{{ pic.caption }}</p>
+            <div v-bind:src="pic"></div>
 
             <!-- call buttons here -->
             <div class="buttons">
-                 <like-button v-bind:pic-id="pic.photoId" />
-               <add-comments v-bind:pic-id="pic.photoId" />
-            <view-comments v-bind:pic-id="pic.photoId" />	 
-                   
+              <span>
+                <like-button v-bind:pic-id="pic.photoId" />
+              </span>
+              <span>
+                <view-comments v-bind:pic-id="pic.photoId" />
+              </span>
+              <span>
+                <add-to-favorites v-bind:pic-id="pic.photoId" />
+              </span>
+              <span>
+                <add-comments v-bind:pic-id="pic.photoId" />
+              </span>
             </div>
+
+
           </div>
+
         </div>
       </div>
     </section>
@@ -28,6 +45,7 @@ import AddComments from "../components/AddComments.vue";
 import serverService from "../services/ServerService.js";
 import ViewComments from "../components/ViewComments.vue";
 import LikeButton from "../components/LikeButton.vue";
+import AddToFavorites from "../components/AddToFavorites.vue";
 
 export default {
   name: "postcard-2",
@@ -35,26 +53,41 @@ export default {
     AddComments,
     ViewComments,
     LikeButton,
+    AddToFavorites
+  },
+
+  computed: {
+    getSelectedUser () {
+      return this.$store.state.selectedUser
+    }
+  },
+  
+  methods: {
+    redirect() {
+this.$router.push({ name: 'userPage', query: 
+            { redirect: '/profile/:username' }})
+    }
+  },
+
+  changeSelectedUser(selectedUser) {
+    this.$store.commit("CHANGE_SELECTED_USER", selectedUser)
   },
 
   data() {
     return {
-      pictures: [],
       allPictures: [],
+      selectedUser: "",
     };
   },
   created() {
-    serverService.listByUser(this.$store.state.user.username).then(
-      (response) => {
-        console.log(response.data);
-        this.pictures = response.data;
-      },
-      serverService.listAll().then((response) => {
-        console.log(response.data);
-        this.allPictures = response.data;
-      })
-    );
-  },
+    serverService.listAll().then((response) => {
+      console.log(response.data);
+      this.allPictures = response.data;
+    }),
+      serverService.listFavorites().then((response) => {
+        this.myFavoritePictures = response.data;
+      });
+  }
 };
 </script>
 
@@ -73,9 +106,7 @@ export default {
   font-size: 30px;
 }
 
-.buttons{
+.buttons {
   display: flex;
 }
-
-
 </style>
