@@ -1,5 +1,6 @@
 <template>
   <div>
+    {{this.like.isLiked}}
     <span>
       <button  
       v-on:click.prevent="flipStatus()"
@@ -11,6 +12,8 @@
         ></i></button
     ></span>
     {{ this.likeCount }}
+    
+    
   </div>
 </template>
 
@@ -21,7 +24,7 @@ export default {
   props: ["picId"],
   data() {
     return {
-      likeCount: 0,
+      likeCount: 0, 
       like: {
         username: this.$store.state.user.username,
         photoId: this.picId,
@@ -30,25 +33,28 @@ export default {
     };
   },
   created() {
-    ServerService.likeCount(this.like.photoId).then((respsonse) => {
-      this.likeCount = respsonse.data;
-      this.like.isLiked = ServerService.getLikedStatus(this.like)
-    }
-    );
+    ServerService.likeCount(this.like.photoId).then((response) => {
+      this.likeCount = response.data;
+      }),
+
+    ServerService.getLikedStatus(this.like).then((response) =>{
+      this.like.isLiked = response.data;
+      })
+   
   },
   methods: {
   
     flipStatus() {
-        if(!this.isLiked) {
+        if(!this.like.isLiked) {
           ServerService.addLike(this.like).then(() => {
         this.likeCount +=1;
-        this.isLiked = true
+        this.like.isLiked = true
       });
         
-        } else if(this.isLiked) {
+        } else if(this.like.isLiked) {
             ServerService.subtractLike(this.like).then(() => {});
             this.likeCount -=1;
-            this.isLiked = false;
+            this.like.isLiked = false;
         }
       
     }

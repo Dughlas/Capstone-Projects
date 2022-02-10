@@ -1,6 +1,6 @@
 <template>
   <div>
-    {{this.newFavorite.isFavorited}}
+    
     <span>
       <button v-on:click.prevent="flipStatus()">
         <i

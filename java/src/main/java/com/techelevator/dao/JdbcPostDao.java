@@ -124,11 +124,10 @@ public class JdbcPostDao implements PostDao {
         boolean isLiked = false;
         try {
             if (template.queryForObject(sql, Boolean.class, userId, photoId) == true) {
-                isLiked = true;
-                return isLiked;
+                return true;
             }
         } catch (Exception e) {
-            return isLiked;
+            return false;
         }
         return false;
     }

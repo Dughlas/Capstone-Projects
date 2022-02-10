@@ -102,7 +102,7 @@ public class ServerController {
         postDao.deleteLike(removedLike);
     }
 
-    @RequestMapping(path="/isItLiked", method = RequestMethod.GET)
+    @RequestMapping(path="/isItLiked", method = RequestMethod.POST)
     public boolean liked(@RequestBody LikeDTO likeDto) {
         int userId = userDao.findIdByUsername(likeDto.getUsername());
 

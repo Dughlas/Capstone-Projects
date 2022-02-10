@@ -59,4 +59,14 @@ public class LikeDTO {
     public void setPhotoId(int photoId) {
         this.photoId = photoId;
     }
+
+    public void setNumberOfLikes(int numberOfLikes) {
+        this.numberOfLikes = numberOfLikes;
+    }
+    public boolean isLiked() {
+        return isLiked;
+    }
+    public void setLiked(boolean liked) {
+        isLiked = liked;
+    }
 }

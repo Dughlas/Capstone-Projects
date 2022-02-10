@@ -33,9 +33,8 @@ export default {
         return axios.get(`/countLike/${photoId}`)
     },
     getLikedStatus(currentPost) {
-        return axios.get('/isItLiked', currentPost)
+        return axios.post('/isItLiked', currentPost)
     },
-
 
     addToFavorites(favorite) {
         return axios.post(`/newFav`, favorite)
