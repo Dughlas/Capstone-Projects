@@ -4,9 +4,9 @@
       <div class="main-flex-container">
         <div class="flex-container">
           <div v-for="pic in allPictures" :key="pic.Id">
-            {{}}
+            
 
-              <img :src="pic.profilePicUrl" />
+              
             
               <router-link :to="{name: 'userPage', params: {username: pic.username}}" >{{pic.username}}</router-link>
                
