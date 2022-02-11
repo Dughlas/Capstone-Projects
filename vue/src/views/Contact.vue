@@ -1,29 +1,17 @@
 <template>
   <div>
      <top-menu></top-menu>
-        <h3>Contact Form</h3>
-
-    <div class="container">
-      <form action="/action_page.php">
-        <label for="fname">First Name</label>
-        <input type="text" id="fname" name="firstname" placeholder="Your name..">
-
-        <label for="lname">Last Name</label>
-        <input type="text" id="lname" name="lastname" placeholder="Your last name..">
-
-        <label for="country">Country</label>
-        <select id="country" name="country">
-          <option value="australia">Australia</option>
-          <option value="canada">Canada</option>
-          <option value="usa">USA</option>
-        </select>
-
-        <label for="subject">Subject</label>
-        <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
-
-        <input type="submit" value="Submit">
-      </form>
+        <h3>The Multiverse Team</h3>
+   
+    <div >
+     <ul>
+       <li><a href="https://www.linkedin.com/in/nema-aragones-798b429b/">Nema Aragones</a></li>
+      <li><a href="https://www.linkedin.com/in/isaiahtoliver/">Isaiah Toliver</a></li>
+      <li><a href="https://www.linkedin.com/in/dughlas-snider/">Aron Hashbarger</a></li>
+      <li><a href="https://www.linkedin.com/in/stephanie-konczal/">Stephanie Konczal</a></li>
+      </ul>
     </div>
+    
      <footer-section></footer-section>
   </div>
 </template>
@@ -75,7 +63,24 @@ input[type=submit]:hover {
 }
 
 h3{
+  text-align: center;
   margin-top: 150px;
-  padding-left: 450px;
+  padding-left: 5px;
+  
+ 
 }
+h4{
+  text-align: right;
+  padding-right: 200px;
+}
+ul{
+  font-family: "Lucida Console";
+  font-size: 20px;
+  text-align: center;
+  list-style-type: none;
+  line-height: 100px;
+  padding-top: 10px;
+  padding-right: 30px;
+}
+
 </style>
