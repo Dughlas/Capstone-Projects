@@ -17,19 +17,19 @@
 
             <!-- call buttons here -->
             <div class="buttons">
-              <span class="space-in">
-                <like-button v-bind:pic-id="pic.photoId" />
-              </span>
-               <span class="space-in">
-                <add-comments v-bind:pic-id="pic.photoId" />
-              </span>
-              <span class="space-in">
-                <view-comments v-bind:pic-id="pic.photoId" />
-              </span>
-              <span class="span-right">
-                <add-to-favorites v-bind:pic-id="pic.photoId" />
-              </span>
-            </div>
+                      <span class="space-in">
+                        <like-button v-bind:pic-id="pic.photoId" />
+                      </span>
+                      <span class="space-in" >
+                        <add-comments v-bind:pic-id="pic.photoId" />
+                      </span>
+                      <span class="space-in">
+                        <view-comments v-bind:pic-id="pic.photoId" />
+                      </span>
+                      <span class="space-in">
+                        <add-to-favorites v-bind:pic-id="pic.photoId" />
+                      </span>
+                    </div>
 
 
           </div>
@@ -115,10 +115,11 @@ this.$router.push({ name: 'userPage', query:
   margin-left:20px;
 }
 .space-right{
-  margin-left: 300px;
+  padding-left: 10px;
 }
 .caption{
-  font-size: medium;
+  font-size: 20px;
+   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 }
 
 </style>

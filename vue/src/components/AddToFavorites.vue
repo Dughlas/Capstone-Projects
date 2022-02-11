@@ -1,7 +1,8 @@
 <template>
   <div>
-    <span>
-      <button v-on:click.prevent="flipStatus()">
+    <span >
+      <button
+      title="favorite"      id="star" v-on:click.prevent="flipStatus()">
         <i
           class="far fa-star"
           data-fa-transform="shrink-3.5 down-1.6 right-1.25"
@@ -54,4 +55,7 @@ export default {
 </script>
 
 <style>
+#star{
+  font-size: 28px;
+}
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div >
-             <span>          
+             <span id="bubble">          
                 <button id="show-form-button" v-on:click="showForm = true" v-on:dblclick="showForm = false" title="Add Comments">
                   <i class="far fa-comment" data-fa-transform="shrink-6" data-fa-mask="fas fa-square"> </i>
                 </button>
@@ -90,6 +90,9 @@ input[type=submit] {
   font-size: medium;
   
  
+}
+#bubble {
+  font-size: 28px;
 }
 
 

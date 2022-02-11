@@ -14,12 +14,20 @@
             <div v-bind:src="pic"></div>
 
             <!-- call buttons here -->
-            <div class="buttons">
-              <like-button v-bind:pic-id="pic.photoId" />
-              <add-comments v-bind:pic-id="pic.photoId" />
-              <view-comments v-bind:pic-id="pic.photoId" />
-              <add-to-favorites v-bind:pic-id="pic.photoId" />
-            </div>
+             <div class="buttons">
+                      <span class="space-in">
+                        <like-button v-bind:pic-id="pic.photoId" />
+                      </span>
+                      <span class="space-in" >
+                        <add-comments v-bind:pic-id="pic.photoId" />
+                      </span>
+                      <span class="space-in" id="com-bubble">
+                        <view-comments v-bind:pic-id="pic.photoId" />
+                      </span>
+                      <span class="space-right">
+                        <add-to-favorites v-bind:pic-id="pic.photoId" />
+                      </span>
+                    </div>
           </div>
         </div>
       </div>
@@ -86,5 +94,15 @@ export default {
 }
 .count {
   font-size: small;
+}
+.space-in{
+  margin-left:20px;
+}
+.space-right{
+ 
+  padding-left: 500px;
+}
+#com-bubble{
+  padding-right: 200px;
 }
 </style>

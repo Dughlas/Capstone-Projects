@@ -13,7 +13,7 @@
      
 <div class="comments">
     <p class="name">{{comment.username}}</p>
-  <p>{{comment.comment}}</p>
+  <p class="text">{{comment.comment}}</p>
   </div>
 
     </div>
@@ -25,7 +25,7 @@
 
 <div class="comments">
   <p class="name">{{comment.username}}</p>
-  <p>{{comment.comment}}</p>
+  <p class="text">{{comment.comment}}</p>
   </div>
         
 
@@ -77,13 +77,16 @@ span{
 }
 .comments {
   font-size: 16px;
+  display: flex;
+  flex-direction: row;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 }
 .name {
   color: #861657;
-  font: bolder;
-  font-family: 'Roboto', sans-serif;
-  
+  margin-right: 4px;
+  font-weight: bold;
 }
+
 
 
 

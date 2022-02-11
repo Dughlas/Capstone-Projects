@@ -33,14 +33,14 @@
                     <div v-bind:src="pic"></div>
                     <!-- call buttons here -->
                     <div class="buttons">
-                      <span>
+                      <span class="space-in">
                         <like-button v-bind:pic-id="pic.photoId" />
                       </span>
-                      <span class="space-in">
-                        <view-comments v-bind:pic-id="pic.photoId" />
-                      </span>
-                      <span class="space-in">
+                      <span class="space-in" >
                         <add-comments v-bind:pic-id="pic.photoId" />
+                      </span>
+                      <span class="space-in" id="com-bubble">
+                        <view-comments v-bind:pic-id="pic.photoId" />
                       </span>
                       <span class="space-right">
                         <add-to-favorites v-bind:pic-id="pic.photoId" />
@@ -151,15 +151,16 @@ serverService.listByUser(this.$route.params.username).then((response) => {
 .tiny-pic-dad{
   padding: 100px;
 }
-.space-in{
-  margin-left:20px;
-}
+
 .bio-padding{
    margin:0px;
    padding:5px;
 }
+.space-in{
+  margin-left:20px;
+}
 .space-right{
-  margin-left: 200px;
+  padding-left: 200px;
 }
 .navigation-link{
   padding-left: 20px;
@@ -167,5 +168,8 @@ serverService.listByUser(this.$route.params.username).then((response) => {
 .navigation-link-fa{
   padding-left: 15px;
   font-size: xx-large;
+}
+#com-bubble{
+  padding-right: 65px;
 }
 </style>

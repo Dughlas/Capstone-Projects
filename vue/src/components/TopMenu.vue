@@ -12,8 +12,9 @@
 
         <!-- home button -->
         <div class="navigation-icons">
-          <a href="" target="_blank" class="navigation-link">
+          <a title="home" href="" target="_blank" class="navigation-link">
             <router-link
+            
               v-bind:to="{ name: 'home' }"
               tag="i"
               class="fa fa-home"
@@ -22,7 +23,7 @@
 
           
           <!-- add photo button -->
-          <div class="navigation-link">
+          <div class="navigation-link" title="new post">
             <button
               @click="openUploadModal"
               tag="i"
@@ -35,7 +36,7 @@
           <!-- view my favorites button -->
           <router-link 
           v-bind:to="{ name: 'favoriteFeed' }">
-            <a class="navigation-link notifica">
+            <a class="navigation-link notifica" title="my favorites">
               <i class="far fa-star">
                 <div class="notification-bubble-wrapper">
                   <div class="notification-bubble">
@@ -49,7 +50,7 @@
 
           <!-- my profile button -->
                     <router-link :to="{name: 'userPage', params: {username: this.$store.state.user.username }}">
-            <a class="navigation-link notifica">
+            <a class="navigation-link notifica" title="my profile">
               <i class="far fa-user-circle">
                 <div class="notification-bubble-wrapper">
                   <div class="notification-bubble">
@@ -62,7 +63,7 @@
 
 
           <!--Logout widget  -->
-          <a href="" id="signout" class="navigation-link">
+          <a href="" id="signout" class="navigation-link" title="signout">
             <router-link
               v-bind:to="{ name: 'logout' }"
               tag="i"
