@@ -12,7 +12,7 @@
 
 <form
         v-on:submit.prevent="submitProfile()"
-        v-if="this.$store.state.user.username === this.$route.params.username">
+        v-if="this.$store.state.user.username === this.$route.params.username ">
         <input type="text" v-model="newProfile.bio" placeholder="Add your bio here!" />
         <div class="navigation-link">
           <button

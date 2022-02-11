@@ -7,11 +7,11 @@
             
 
               
+           
+              <router-link :to="{name: 'userPage', params: {username: pic.username}}" class="routerlink">{{pic.username}}</router-link>
             
-              <router-link :to="{name: 'userPage', params: {username: pic.username}}" >{{pic.username}}</router-link>
-               
 
-            <p><img :src="pic.url" width="500px" length="500px" alt="" /></p>
+            <p><img :src="pic.url" width="300px" length="300px" alt="" /></p>
             <p class="caption">{{ pic.caption }}</p>
             <div v-bind:src="pic"></div>
 
@@ -106,7 +106,9 @@ this.$router.push({ name: 'userPage', query:
   font-size: 30px;
 }
 
-.buttons {
-  display: flex;
+.routerlink {
+  color: rgba(37, 37, 37, 0.856);
+  font-family: 'Roboto', sans-serif;
 }
+
 </style>
