@@ -17,17 +17,17 @@
 
             <!-- call buttons here -->
             <div class="buttons">
-              <span>
+              <span class="space-in">
                 <like-button v-bind:pic-id="pic.photoId" />
               </span>
-              <span>
+               <span class="space-in">
+                <add-comments v-bind:pic-id="pic.photoId" />
+              </span>
+              <span class="space-in">
                 <view-comments v-bind:pic-id="pic.photoId" />
               </span>
-              <span>
+              <span class="span-right">
                 <add-to-favorites v-bind:pic-id="pic.photoId" />
-              </span>
-              <span>
-                <add-comments v-bind:pic-id="pic.photoId" />
               </span>
             </div>
 
@@ -108,7 +108,17 @@ this.$router.push({ name: 'userPage', query:
 
 .routerlink {
   color: rgba(37, 37, 37, 0.856);
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+
+.space-in{
+  margin-left:20px;
+}
+.space-right{
+  margin-left: 300px;
+}
+.caption{
+  font-size: medium;
 }
 
 </style>
