@@ -11,7 +11,8 @@
           data-fa-transform="shrink-10 up-.5"
           data-fa-mask="fas fa-comment"
         ></i></button
-    ></span>
+    >
+    </span>
     <sub class="count">{{ this.likeCount }}</sub>
     
     
@@ -73,5 +74,8 @@ export default {
 }
 .count {
   font-size: small;
+}
+#like-button{
+  font-size: 28px;
 }
 </style>

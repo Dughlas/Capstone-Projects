@@ -1,18 +1,34 @@
 <template>
   <div class="main-comment-containter">
+
+<div class="clock">
+<button id="comment-history-btn" title="View Comment History" v-on:click="flipStatus()" >
+           <i class="fa fa-history" aria-hidden="true"></i>
+
+   </button>
+   </div>
+
+
     <div v-for="comment in allComments.slice(0, 2)" :key="comment.id">
-      <div>{{ comment.username }}</div>
-      <div>{{ comment.comment }}</div>
+     
+<div class="comments">
+    <p class="name">{{comment.username}}</p>
+  <p>{{comment.comment}}</p>
+  </div>
+
     </div>
 
-    <button id="comment-history-btn" title="View Comment History" v-on:click="flipStatus()" >
-           <i class="fa fa-history" aria-hidden="true"></i>
-   </button>
+    
 
     <div id="show-all-comments" v-if="showComments === true">
       <div v-for="comment in allComments.slice(2)" :key="comment.id">
-        <div>{{ comment.username }}</div>
-        <div>{{ comment.comment }}</div>
+
+<div class="comments">
+  <p class="name">{{comment.username}}</p>
+  <p>{{comment.comment}}</p>
+  </div>
+        
+
       </div>
     </div>
   </div>
@@ -56,5 +72,20 @@ export default {
 #comment-history-btn {
    border: none;
 }
+span{
+  font-size: smaller;
+}
+.comments {
+  font-size: 16px;
+}
+.name {
+  color: #861657;
+  font: bolder;
+  font-family: 'Roboto', sans-serif;
+  
+}
+
+
+
 
 </style>

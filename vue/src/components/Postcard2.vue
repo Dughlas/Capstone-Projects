@@ -7,27 +7,27 @@
             
 
               
+           
+              <router-link :to="{name: 'userPage', params: {username: pic.username}}" class="routerlink">{{pic.username}}</router-link>
             
-              <router-link :to="{name: 'userPage', params: {username: pic.username}}" >{{pic.username}}</router-link>
-               
 
-            <p><img :src="pic.url" width="500px" length="500px" alt="" /></p>
+            <p><img :src="pic.url" width="300px" length="300px" alt="" /></p>
             <p class="caption">{{ pic.caption }}</p>
             <div v-bind:src="pic"></div>
 
             <!-- call buttons here -->
             <div class="buttons">
-              <span>
+              <span class="space-in">
                 <like-button v-bind:pic-id="pic.photoId" />
               </span>
-              <span>
+               <span class="space-in">
+                <add-comments v-bind:pic-id="pic.photoId" />
+              </span>
+              <span class="space-in">
                 <view-comments v-bind:pic-id="pic.photoId" />
               </span>
-              <span>
+              <span class="span-right">
                 <add-to-favorites v-bind:pic-id="pic.photoId" />
-              </span>
-              <span>
-                <add-comments v-bind:pic-id="pic.photoId" />
               </span>
             </div>
 
@@ -106,7 +106,19 @@ this.$router.push({ name: 'userPage', query:
   font-size: 30px;
 }
 
-.buttons {
-  display: flex;
+.routerlink {
+  color: rgba(37, 37, 37, 0.856);
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 }
+
+.space-in{
+  margin-left:20px;
+}
+.space-right{
+  margin-left: 300px;
+}
+.caption{
+  font-size: medium;
+}
+
 </style>
